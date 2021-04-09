@@ -18,7 +18,7 @@ files_id = [str(i) for i in range(1,7)]
 file = '/progress.csv'
 
 nb_axs = int(np.ceil(len(average_periods)/2))
-fig = plt.figure(figsize=(10,9), dpi=100)
+fig = plt.figure(figsize=(10,5), dpi=100)
 axs = []
 
 for k_period, average_period in enumerate(average_periods):
@@ -38,6 +38,6 @@ for k_period, average_period in enumerate(average_periods):
 	ax.set(xlabel='Transferred Bits', ylabel='Average returns')
 
 handles, labels = axs[0].get_legend_handles_labels()
-fig.legend(handles, labels, shadow=True, fancybox=True, bbox_to_anchor=[0.9, 0.9/nb_axs])
+fig.legend(handles, labels, shadow=True, fancybox=True, bbox_to_anchor=[0.9, 0.3/nb_axs])
 fig.suptitle(dir_prefix + ' --- Number of agents: ' + str(agents_number))
 fig.savefig(dir_prefix)

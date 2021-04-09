@@ -16,6 +16,8 @@ class Server(BatchPolopt, Serializable):
                  env,
                  policy,
                  baseline,
+                 quantize=False,
+                 quantization_tuning=4,
                  optimizer=None,
                  optimizer_args=None,
                  **kwargs):
@@ -34,7 +36,9 @@ class Server(BatchPolopt, Serializable):
         self.agents = [Agent(env=env,
                            policy=policy,
                            optimizer=optimizer,
-                           baseline=baseline, **kwargs)
+                           baseline=baseline,
+                           quantize=quantize,
+                           quantization_tuning=quantization_tuning, **kwargs)
                         for optimizer in optimizer]
         self.baseline = baseline
         self.average_period = average_period
@@ -46,6 +50,8 @@ class Server(BatchPolopt, Serializable):
                                     env=env,
                                     policy=policy,
                                     baseline=baseline,
+                                    quantize=quantize,
+                                    quantization_tuning=quantization_tuning,
                                     optimizer=optimizer,
                                     optimizer_args=optimizer_args, **kwargs)
 

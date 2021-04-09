@@ -20,6 +20,8 @@ class Agent(BatchPolopt, Serializable):
             env,
             policy,
             baseline,
+            quantize=False,
+            quantization_tuning=4,
             optimizer=None,
             optimizer_args=None,
             **kwargs):
@@ -35,10 +37,15 @@ class Agent(BatchPolopt, Serializable):
                 optimizer_args = dict(default_args, **optimizer_args)
             optimizer = FirstOrderOptimizer(**optimizer_args)
         self.optimizer = optimizer
+        self.quantize = quantize
+        self.quantization_tuning = quantization_tuning
         self.opt_info = None
         self.policy_params_last_update = 0
-        self.quantization_tuning = 4
-        super(Agent, self).__init__(env=env, policy=policy, baseline=baseline, **kwargs)
+        super(Agent, self).__init__(env=env,
+                                    policy=policy,
+                                    baseline=baseline,
+                                    quantize=quantize,
+                                    quantization_tuning=quantization_tuning, **kwargs)
 
     def server_update_policy(self, delta_policy_params):
         policy_params = self.policy_params_last_update - delta_policy_params
@@ -62,8 +69,9 @@ class Agent(BatchPolopt, Serializable):
         return [self.quantize_component(vector, component) for component in vector]
 
     def transmit_server(self):
-        # to_send = self.quantize_vector(self.policy_params_last_update - self.policy.get_param_values())
         to_send = self.policy_params_last_update - self.policy.get_param_values()
+        if self.quantize:
+            to_send = self.quantize_vector(to_send)
         return to_send
 
     @overrides
