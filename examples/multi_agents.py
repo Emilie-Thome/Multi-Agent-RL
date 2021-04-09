@@ -51,9 +51,9 @@ def run_task(v):
     algo.train()
 
 
-participation_rates = [0.1, 0.5, 1]
+participation_rates = [0.3, 0.5, 0.6]
 agents_numbers = [10]
-average_periods = [1, 5, 10] * 3
+average_periods = [1, 5]*5
 
 for participation_rate in participation_rates:
     for agents_number in agents_numbers:
