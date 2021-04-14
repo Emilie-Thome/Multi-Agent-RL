@@ -49,10 +49,17 @@ import numpy as np
 # fig.suptitle(dir_prefix + ' --- Number of agents: ' + str(agents_number))
 # fig.savefig(dir_prefix)
 
+'''
+Multiple quantization_tunings
+'''
+# dir_prefix = 'multi_agent_per_av_returns_part_bits_quant_2021_04_09_14_43_48_000'
+# quantization_tunings = [1, 5, 10, 15]
+# participation_rate = 0.8
+# agents_number = 10
+# average_period = 5
 
-# multiple quantization_tunings
-dir_prefix = 'multi_agent_per_av_returns_part_bits_quant_2021_04_09_14_43_48_000'
-quantization_tunings = [1, 5, 10, 15]
+dir_prefix = 'multi_agent_per_av_returns_part_bits_quant_2021_04_09_15_06_43_000'
+quantization_tunings = [10, 20, 30, 40]
 participation_rate = 0.8
 agents_number = 10
 average_period = 5

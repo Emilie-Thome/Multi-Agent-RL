@@ -62,7 +62,6 @@ class Agent(BatchPolopt, Serializable):
         rand = random.uniform(0,1)
         ksi_i = (l+1)/s if (rand < p) else l/s
         sgn_v_i = np.sign(v_i)
-
         return norm_v*sgn_v_i*ksi_i
 
     def quantize_vector(self, vector):
