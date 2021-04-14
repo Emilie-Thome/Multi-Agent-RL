@@ -41,6 +41,7 @@ def run_task(v):
         env=env,
         policy=policy,
         baseline=baseline,
+        difference_params=True,
         quantize=True,
         quantization_tuning=quantization_tuning,
         batch_size=400,
@@ -54,8 +55,8 @@ def run_task(v):
 
     algo.train()
 
-quantization_tunings = [10, 20, 30, 40]
-participation_rates = [0.8]
+quantization_tunings = [1, 10]
+participation_rates = [1]
 agents_numbers = [10]
 average_periods = [5]
 
@@ -65,7 +66,7 @@ for quantization_tuning in quantization_tunings:
             for average_period in average_periods:
                 run_experiment_lite(
                     run_task,
-                    exp_prefix="multi_agent_per_av_returns_part_bits_quant",
+                    exp_prefix="test_transfer_diffparams_quant",
                     # Number of parallel workers for sampling
                     n_parallel=1,
                     # Only keep the snapshot parameters for the last iteration

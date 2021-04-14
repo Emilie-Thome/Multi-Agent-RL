@@ -16,6 +16,7 @@ class Server(BatchPolopt, Serializable):
                  env,
                  policy,
                  baseline,
+                 difference_params=False,
                  quantize=False,
                  quantization_tuning=4,
                  optimizer=None,
@@ -37,6 +38,7 @@ class Server(BatchPolopt, Serializable):
                            policy=policy,
                            optimizer=optimizer,
                            baseline=baseline,
+                           difference_params=difference_params,
                            quantize=quantize,
                            quantization_tuning=quantization_tuning, **kwargs)
                         for optimizer in optimizer]
@@ -50,6 +52,7 @@ class Server(BatchPolopt, Serializable):
                                     env=env,
                                     policy=policy,
                                     baseline=baseline,
+                                    difference_params=difference_params,
                                     quantize=quantize,
                                     quantization_tuning=quantization_tuning,
                                     optimizer=optimizer,
