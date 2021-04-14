@@ -54,7 +54,7 @@ def run_task(v):
 
     algo.train()
 
-quantization_tunings = [1, 5, 10, 15]
+quantization_tunings = [10, 20, 30, 40]
 participation_rates = [0.8]
 agents_numbers = [10]
 average_periods = [5]
