@@ -41,7 +41,7 @@ def run_task(v):
         env=env,
         policy=policy,
         baseline=baseline,
-        difference_params=True,
+        difference_params=False,
         quantize=False,
         quantization_tuning=quantization_tuning,
         batch_size=400,
@@ -66,7 +66,7 @@ for quantization_tuning in quantization_tunings:
             for average_period in average_periods:
                 run_experiment_lite(
                     run_task,
-                    exp_prefix="test_partrates_diffparams_notquant",
+                    exp_prefix="test_partrates_params_notquant",
                     # Number of parallel workers for sampling
                     n_parallel=1,
                     # Only keep the snapshot parameters for the last iteration
