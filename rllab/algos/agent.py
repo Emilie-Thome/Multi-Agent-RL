@@ -70,6 +70,11 @@ class Agent(BatchPolopt, Serializable):
         return [self.quantize_component(vector, component) for component in vector]
 
     def transmit_server(self):
+        print("#################################################")
+        print("########### policy_params_last_update ###########")
+        print(self.policy_params_last_update)
+        print("#################################################")
+        print("#################################################")
         to_send = self.policy_params_last_update - self.policy.get_param_values() if self.difference_params else self.policy.get_param_values()
         if self.quantize:
             to_send = self.quantize_vector(to_send)
