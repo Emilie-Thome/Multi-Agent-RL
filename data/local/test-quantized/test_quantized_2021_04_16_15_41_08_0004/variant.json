@@ -1,0 +1,8 @@
+{
+  "agents_number": 5, 
+  "average_period": 10, 
+  "discount": 0.99, 
+  "exp_name": "test_quantized_2021_04_16_15_41_08_0004", 
+  "participation_rate": 1, 
+  "quantization_tuning": 20
+}

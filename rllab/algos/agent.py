@@ -61,7 +61,7 @@ class Agent(BatchPolopt, Serializable):
         norm_v = np.linalg.norm(v)
         abs_v_i = abs(v_i)
         a = abs_v_i/norm_v
-        l = int(a*s)
+        l = float(int(a*s))
         p = a*s - l
         rand = random.uniform(0,1)
         ksi_i = (l+1)/s if (rand < p) else l/s
@@ -72,11 +72,6 @@ class Agent(BatchPolopt, Serializable):
         return [self.quantize_component(vector, component) for component in vector]
 
     def transmit_server(self):
-        print("#################################################")
-        print("########### policy_params_last_update ###########")
-        print(self.policy_params_last_update)
-        print("#################################################")
-        print("#################################################")
         to_send = self.policy_params_last_update - self.policy.get_param_values() if self.difference_params else self.policy.get_param_values()
         if self.quantize:
             to_send = self.quantize_vector(to_send)
