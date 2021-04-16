@@ -19,7 +19,9 @@ def run_task(v):
     print("###                          ####")
     print("###    average_period : " + str(average_period) +"   ####")
     print("###                          ####")
-    print("######## discount : " + str(discount) +" ########")
+    print("### quantization_tuning : " + str(quantization_tuning) +" ####")
+    print("###                          ####")
+    print("###     discount : " + str(discount) +"      ####")
     print("#################################")
     print("_________________________________")
     print("_________________________________")
@@ -42,8 +44,8 @@ def run_task(v):
         policy=policy,
         baseline=baseline,
         difference_params=True,
-        quantize=False,
-        quantization_tuning=0,
+        quantize=True,
+        quantization_tuning=quantization_tuning,
         batch_size=400,
         max_path_length=100,
         n_itr=50,
@@ -55,27 +57,28 @@ def run_task(v):
 
     algo.train()
 
-quantization_tunings = [0]
-discounts = [0.5, 0.75, 0.99]
-participation_rates = [0.5, 1]
-agents_numbers = [5, 10]
-average_periods = [1, 5, 10]
+quantization_tunings = [1, 5, 15, 20]
+discounts = [0.99]
+participation_rates = [1]
+agents_numbers = [5]
+average_periods = [10]
 
-for discount in discounts:
-    for participation_rate in participation_rates:
-        for agents_number in agents_numbers:
-            for average_period in average_periods:
-                run_experiment_lite(
-                    run_task,
-                    exp_prefix="test_discounts",
-                    # Number of parallel workers for sampling
-                    n_parallel=1,
-                    # Only keep the snapshot parameters for the last iteration
-                    snapshot_mode="last",
-                    # Specifies the seed for the experiment. If this is not provided, a random seed
-                    # will be used
-                    mode="local",
-                    variant=dict(discount=discount, participation_rate=participation_rate, agents_number=agents_number, average_period=average_period)
-                    # plot=True,
-                    # terminate_machine=False,
-                )
+for quantization_tuning in quantization_tunings:
+    for discount in discounts:
+        for participation_rate in participation_rates:
+            for agents_number in agents_numbers:
+                for average_period in average_periods:
+                    run_experiment_lite(
+                        run_task,
+                        exp_prefix="test_quantized",
+                        # Number of parallel workers for sampling
+                        n_parallel=1,
+                        # Only keep the snapshot parameters for the last iteration
+                        snapshot_mode="last",
+                        # Specifies the seed for the experiment. If this is not provided, a random seed
+                        # will be used
+                        mode="local",
+                        variant=dict(quantization_tuning=quantization_tuning, discount=discount, participation_rate=participation_rate, agents_number=agents_number, average_period=average_period)
+                        # plot=True,
+                        # terminate_machine=False,
+                    )
