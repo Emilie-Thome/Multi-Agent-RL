@@ -17,6 +17,7 @@ import numpy as np
 
 
 dir_prefix = 'test_partrates_diffparams_notquant_2021_04_15_09_33_36_00'
+# dir_prefix = 'test_partrates_diffparams_notquant_2021_04_16_08_18_09_00'
 participation_rates = [0.5, 0.6, 0.7, 0.8, 0.9, 1]
 agents_numbers = [1, 5, 10]
 average_period = 1
@@ -47,5 +48,6 @@ for k_agent, agents_number in enumerate(agents_numbers):
 handles, labels = axs[0].get_legend_handles_labels()
 fig.legend(handles, labels, shadow=True, fancybox=True, bbox_to_anchor=[0.9, 0.7])
 fig.suptitle('Difference parameters, not quantized, average period: ' + str(average_period))
+# fig.suptitle('Difference parameters, every agent update their mean parameters reference, not quantized, average period: ' + str(average_period))
 fig.savefig(dir_prefix)
 plt.show()

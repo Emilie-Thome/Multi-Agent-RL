@@ -56,8 +56,8 @@ def run_task(v):
     algo.train()
 
 quantization_tunings = [0]
-participation_rates = [0.9]
-agents_numbers = [10]
+participation_rates = [0.5, 0.6, 0.7, 0.8, 0.9, 1]
+agents_numbers = [1, 5, 10]
 average_periods = [1]
 
 for quantization_tuning in quantization_tunings:
@@ -66,7 +66,7 @@ for quantization_tuning in quantization_tunings:
             for average_period in average_periods:
                 run_experiment_lite(
                     run_task,
-                    exp_prefix="test_todelete",
+                    exp_prefix="test_partrates_diffparams_notquant",
                     # Number of parallel workers for sampling
                     n_parallel=1,
                     # Only keep the snapshot parameters for the last iteration
