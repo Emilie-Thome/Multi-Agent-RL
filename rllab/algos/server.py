@@ -109,12 +109,16 @@ class Server(BatchPolopt, Serializable):
     @overrides
     def optimize_policy(self):
         participants = self.generate_participants()
-        delta_policy_params_n = self.collect_delta_policy_params(participants)
-        delta_policy_params_mean = np.average(delta_policy_params_n, axis=0)
 
+        delta_policy_params_n = self.collect_delta_policy_params(participants)
         for k, agent in enumerate(participants):
             self.transferred_bits += sys.getsizeof(delta_policy_params_n[k])
-            agent.server_update_policy(delta_policy_params_mean)
+
+        delta_policy_params_mean = np.average(delta_policy_params_n, axis=0)
+        for agent in self.agents:
+            agent.server_update_mean_policy(delta_policy_params_mean)
+            if agent in participants:
+                agent.server_update_policy()
 
     @overrides
     def get_itr_snapshot(self, itr):

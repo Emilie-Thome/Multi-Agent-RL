@@ -49,10 +49,12 @@ class Agent(BatchPolopt, Serializable):
                                     quantize=quantize,
                                     quantization_tuning=quantization_tuning, **kwargs)
 
-    def server_update_policy(self, delta_policy_params):
+    def server_update_mean_policy(self, delta_policy_params):
         policy_params = self.policy_params_last_update - delta_policy_params if self.difference_params else delta_policy_params
-        self.policy.set_param_values(policy_params)
         self.policy_params_last_update = policy_params
+
+    def server_update_policy(self):
+        self.policy.set_param_values(self.policy_params_last_update)
 
     def quantize_component(self, v, v_i):
         s = self.quantization_tuning
@@ -70,6 +72,11 @@ class Agent(BatchPolopt, Serializable):
         return [self.quantize_component(vector, component) for component in vector]
 
     def transmit_server(self):
+        print("#################################################")
+        print("########### policy_params_last_update ###########")
+        print(self.policy_params_last_update)
+        print("#################################################")
+        print("#################################################")
         to_send = self.policy_params_last_update - self.policy.get_param_values() if self.difference_params else self.policy.get_param_values()
         if self.quantize:
             to_send = self.quantize_vector(to_send)

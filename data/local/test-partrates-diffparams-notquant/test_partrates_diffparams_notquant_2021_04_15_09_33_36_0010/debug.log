@@ -1,0 +1,946 @@
+2021-04-15 09:41:57.825596 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] Populating workers...
+2021-04-15 09:41:57.825818 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] Populated
+2021-04-15 09:41:58.256635 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #0 | fitting baseline...
+2021-04-15 09:41:58.281292 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #0 | fitted
+2021-04-15 09:42:01.448026 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #1 | fitting baseline...
+2021-04-15 09:42:01.450091 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #1 | fitted
+2021-04-15 09:42:01.455239 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #1 | saving snapshot...
+2021-04-15 09:42:01.461045 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #1 | saved
+2021-04-15 09:42:01.463501 CEST | -----------------------  -------------
+2021-04-15 09:42:01.463966 CEST | Iteration                  0
+2021-04-15 09:42:01.464266 CEST | AverageDiscountedReturn   38.7031
+2021-04-15 09:42:01.464545 CEST | AverageReturn             39.603
+2021-04-15 09:42:01.464760 CEST | ExplainedVariance          1.74004e-11
+2021-04-15 09:42:01.464964 CEST | NumTrajs                  81
+2021-04-15 09:42:01.465176 CEST | Entropy                    1.41894
+2021-04-15 09:42:01.465381 CEST | Perplexity                 4.13273
+2021-04-15 09:42:01.465609 CEST | StdReturn                 25.6869
+2021-04-15 09:42:01.465829 CEST | MaxReturn                119.96
+2021-04-15 09:42:01.466049 CEST | MinReturn                  0
+2021-04-15 09:42:01.466268 CEST | AveragePolicyStd           1
+2021-04-15 09:42:01.466487 CEST | Iteration                  1
+2021-04-15 09:42:01.466710 CEST | AverageDiscountedReturn   44.086
+2021-04-15 09:42:01.466935 CEST | AverageReturn             45.178
+2021-04-15 09:42:01.467149 CEST | ExplainedVariance          0.320352
+2021-04-15 09:42:01.467370 CEST | NumTrajs                  73
+2021-04-15 09:42:01.467592 CEST | Entropy                    1.41794
+2021-04-15 09:42:01.467805 CEST | Perplexity                 4.1286
+2021-04-15 09:42:01.468044 CEST | StdReturn                 25.1522
+2021-04-15 09:42:01.468284 CEST | MaxReturn                109.952
+2021-04-15 09:42:01.468500 CEST | MinReturn                  9.98003
+2021-04-15 09:42:01.468720 CEST | AveragePolicyStd           0.999001
+2021-04-15 09:42:01.468943 CEST | TransfBits                 0
+2021-04-15 09:42:01.469157 CEST | TotalAverageReturn        44.086
+2021-04-15 09:42:01.469374 CEST | -----------------------  -------------
+2021-04-15 09:42:01.669181 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #2 | fitting baseline...
+2021-04-15 09:42:01.671029 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #2 | fitted
+2021-04-15 09:42:01.674353 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #2 | saving snapshot...
+2021-04-15 09:42:01.677665 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #2 | saved
+2021-04-15 09:42:01.678416 CEST | -----------------------  ----------
+2021-04-15 09:42:01.678557 CEST | Iteration                  2
+2021-04-15 09:42:01.678687 CEST | AverageDiscountedReturn   41.4384
+2021-04-15 09:42:01.678814 CEST | AverageReturn             42.6019
+2021-04-15 09:42:01.678940 CEST | ExplainedVariance          0.181803
+2021-04-15 09:42:01.679065 CEST | NumTrajs                  76
+2021-04-15 09:42:01.679193 CEST | Entropy                    1.41841
+2021-04-15 09:42:01.679321 CEST | Perplexity                 4.13056
+2021-04-15 09:42:01.679446 CEST | StdReturn                 31.6632
+2021-04-15 09:42:01.679571 CEST | MaxReturn                209.896
+2021-04-15 09:42:01.679696 CEST | MinReturn                  0
+2021-04-15 09:42:01.679821 CEST | AveragePolicyStd           0.999475
+2021-04-15 09:42:01.679979 CEST | TransfBits                 0
+2021-04-15 09:42:01.680106 CEST | TotalAverageReturn        41.4384
+2021-04-15 09:42:01.680232 CEST | -----------------------  ----------
+2021-04-15 09:42:01.856744 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #3 | fitting baseline...
+2021-04-15 09:42:01.858722 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #3 | fitted
+2021-04-15 09:42:01.862165 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #3 | saving snapshot...
+2021-04-15 09:42:01.865722 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #3 | saved
+2021-04-15 09:42:01.866533 CEST | -----------------------  ----------
+2021-04-15 09:42:01.866685 CEST | Iteration                  3
+2021-04-15 09:42:01.866822 CEST | AverageDiscountedReturn   40.922
+2021-04-15 09:42:01.866957 CEST | AverageReturn             42.0497
+2021-04-15 09:42:01.867090 CEST | ExplainedVariance          0.175817
+2021-04-15 09:42:01.867223 CEST | NumTrajs                  77
+2021-04-15 09:42:01.867352 CEST | Entropy                    1.41803
+2021-04-15 09:42:01.867484 CEST | Perplexity                 4.12896
+2021-04-15 09:42:01.867614 CEST | StdReturn                 31.0415
+2021-04-15 09:42:01.867743 CEST | MaxReturn                189.883
+2021-04-15 09:42:01.867874 CEST | MinReturn                  0
+2021-04-15 09:42:01.868037 CEST | AveragePolicyStd           0.999088
+2021-04-15 09:42:01.868169 CEST | TransfBits                 0
+2021-04-15 09:42:01.868299 CEST | TotalAverageReturn        40.922
+2021-04-15 09:42:01.868429 CEST | -----------------------  ----------
+2021-04-15 09:42:02.040909 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #4 | fitting baseline...
+2021-04-15 09:42:02.042798 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #4 | fitted
+2021-04-15 09:42:02.045856 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #4 | saving snapshot...
+2021-04-15 09:42:02.048992 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #4 | saved
+2021-04-15 09:42:02.049711 CEST | -----------------------  ----------
+2021-04-15 09:42:02.049847 CEST | Iteration                  4
+2021-04-15 09:42:02.049970 CEST | AverageDiscountedReturn   47.2154
+2021-04-15 09:42:02.050087 CEST | AverageReturn             48.6655
+2021-04-15 09:42:02.050203 CEST | ExplainedVariance          0.233653
+2021-04-15 09:42:02.050319 CEST | NumTrajs                  69
+2021-04-15 09:42:02.050435 CEST | Entropy                    1.41789
+2021-04-15 09:42:02.050549 CEST | Perplexity                 4.1284
+2021-04-15 09:42:02.050665 CEST | StdReturn                 32.9523
+2021-04-15 09:42:02.050781 CEST | MaxReturn                139.928
+2021-04-15 09:42:02.050894 CEST | MinReturn                  0
+2021-04-15 09:42:02.051007 CEST | AveragePolicyStd           0.998953
+2021-04-15 09:42:02.051120 CEST | TransfBits                 0
+2021-04-15 09:42:02.051234 CEST | TotalAverageReturn        47.2154
+2021-04-15 09:42:02.051347 CEST | -----------------------  ----------
+2021-04-15 09:42:02.223010 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #5 | fitting baseline...
+2021-04-15 09:42:02.225049 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #5 | fitted
+2021-04-15 09:42:02.228631 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #5 | saving snapshot...
+2021-04-15 09:42:02.232210 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #5 | saved
+2021-04-15 09:42:02.233011 CEST | -----------------------  ----------
+2021-04-15 09:42:02.233163 CEST | Iteration                  5
+2021-04-15 09:42:02.233302 CEST | AverageDiscountedReturn   52.9531
+2021-04-15 09:42:02.233443 CEST | AverageReturn             54.8068
+2021-04-15 09:42:02.233574 CEST | ExplainedVariance          0.28651
+2021-04-15 09:42:02.233711 CEST | NumTrajs                  62
+2021-04-15 09:42:02.233849 CEST | Entropy                    1.418
+2021-04-15 09:42:02.233989 CEST | Perplexity                 4.12885
+2021-04-15 09:42:02.234125 CEST | StdReturn                 36.7864
+2021-04-15 09:42:02.234268 CEST | MaxReturn                169.965
+2021-04-15 09:42:02.234406 CEST | MinReturn                  0
+2021-04-15 09:42:02.234550 CEST | AveragePolicyStd           0.999061
+2021-04-15 09:42:02.234690 CEST | TransfBits                 0
+2021-04-15 09:42:02.234830 CEST | TotalAverageReturn        52.9531
+2021-04-15 09:42:02.234966 CEST | -----------------------  ----------
+2021-04-15 09:42:02.425343 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #6 | fitting baseline...
+2021-04-15 09:42:02.427451 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #6 | fitted
+2021-04-15 09:42:02.431128 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #6 | saving snapshot...
+2021-04-15 09:42:02.435311 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #6 | saved
+2021-04-15 09:42:02.436217 CEST | -----------------------  ----------
+2021-04-15 09:42:02.436371 CEST | Iteration                  6
+2021-04-15 09:42:02.436516 CEST | AverageDiscountedReturn   46.5952
+2021-04-15 09:42:02.436650 CEST | AverageReturn             47.8229
+2021-04-15 09:42:02.436781 CEST | ExplainedVariance          0.278235
+2021-04-15 09:42:02.436918 CEST | NumTrajs                  70
+2021-04-15 09:42:02.437048 CEST | Entropy                    1.41802
+2021-04-15 09:42:02.437178 CEST | Perplexity                 4.12893
+2021-04-15 09:42:02.437307 CEST | StdReturn                 26.3319
+2021-04-15 09:42:02.437440 CEST | MaxReturn                139.915
+2021-04-15 09:42:02.437569 CEST | MinReturn                  9.97978
+2021-04-15 09:42:02.437705 CEST | AveragePolicyStd           0.99908
+2021-04-15 09:42:02.437834 CEST | TransfBits                 0
+2021-04-15 09:42:02.437964 CEST | TotalAverageReturn        46.5952
+2021-04-15 09:42:02.438093 CEST | -----------------------  ----------
+2021-04-15 09:42:02.626220 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #7 | fitting baseline...
+2021-04-15 09:42:02.628331 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #7 | fitted
+2021-04-15 09:42:02.632014 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #7 | saving snapshot...
+2021-04-15 09:42:02.635528 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #7 | saved
+2021-04-15 09:42:02.636390 CEST | -----------------------  ----------
+2021-04-15 09:42:02.636551 CEST | Iteration                  7
+2021-04-15 09:42:02.636686 CEST | AverageDiscountedReturn   47.8065
+2021-04-15 09:42:02.636823 CEST | AverageReturn             49.5256
+2021-04-15 09:42:02.636960 CEST | ExplainedVariance          0.177123
+2021-04-15 09:42:02.637091 CEST | NumTrajs                  68
+2021-04-15 09:42:02.637221 CEST | Entropy                    1.41787
+2021-04-15 09:42:02.637348 CEST | Perplexity                 4.12834
+2021-04-15 09:42:02.637480 CEST | StdReturn                 40.0767
+2021-04-15 09:42:02.637613 CEST | MaxReturn                239.919
+2021-04-15 09:42:02.637745 CEST | MinReturn                  9.97956
+2021-04-15 09:42:02.637878 CEST | AveragePolicyStd           0.998936
+2021-04-15 09:42:02.638009 CEST | TransfBits                 0
+2021-04-15 09:42:02.638144 CEST | TotalAverageReturn        47.8065
+2021-04-15 09:42:02.638276 CEST | -----------------------  ----------
+2021-04-15 09:42:02.822970 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #8 | fitting baseline...
+2021-04-15 09:42:02.824900 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #8 | fitted
+2021-04-15 09:42:02.828519 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #8 | saving snapshot...
+2021-04-15 09:42:02.831894 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #8 | saved
+2021-04-15 09:42:02.832714 CEST | -----------------------  ----------
+2021-04-15 09:42:02.832866 CEST | Iteration                  8
+2021-04-15 09:42:02.833008 CEST | AverageDiscountedReturn   54.6368
+2021-04-15 09:42:02.833149 CEST | AverageReturn             57.4644
+2021-04-15 09:42:02.833342 CEST | ExplainedVariance         -0.181995
+2021-04-15 09:42:02.833522 CEST | NumTrajs                  60
+2021-04-15 09:42:02.833657 CEST | Entropy                    1.41786
+2021-04-15 09:42:02.833787 CEST | Perplexity                 4.12828
+2021-04-15 09:42:02.833925 CEST | StdReturn                 57.928
+2021-04-15 09:42:02.834057 CEST | MaxReturn                419.78
+2021-04-15 09:42:02.834184 CEST | MinReturn                  0
+2021-04-15 09:42:02.834315 CEST | AveragePolicyStd           0.998924
+2021-04-15 09:42:02.834445 CEST | TransfBits                 0
+2021-04-15 09:42:02.834572 CEST | TotalAverageReturn        54.6368
+2021-04-15 09:42:02.834703 CEST | -----------------------  ----------
+2021-04-15 09:42:03.017938 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #9 | fitting baseline...
+2021-04-15 09:42:03.019812 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #9 | fitted
+2021-04-15 09:42:03.023734 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #9 | saving snapshot...
+2021-04-15 09:42:03.026952 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #9 | saved
+2021-04-15 09:42:03.027681 CEST | -----------------------  ------------
+2021-04-15 09:42:03.027822 CEST | Iteration                  9
+2021-04-15 09:42:03.028001 CEST | AverageDiscountedReturn   57.7454
+2021-04-15 09:42:03.028144 CEST | AverageReturn             59.9613
+2021-04-15 09:42:03.028277 CEST | ExplainedVariance          0.00617996
+2021-04-15 09:42:03.028415 CEST | NumTrajs                  58
+2021-04-15 09:42:03.028547 CEST | Entropy                    1.41823
+2021-04-15 09:42:03.028679 CEST | Perplexity                 4.12982
+2021-04-15 09:42:03.028812 CEST | StdReturn                 39.8495
+2021-04-15 09:42:03.028948 CEST | MaxReturn                239.851
+2021-04-15 09:42:03.029082 CEST | MinReturn                  9.98268
+2021-04-15 09:42:03.029212 CEST | AveragePolicyStd           0.999295
+2021-04-15 09:42:03.029345 CEST | TransfBits                 0
+2021-04-15 09:42:03.029478 CEST | TotalAverageReturn        57.7454
+2021-04-15 09:42:03.029613 CEST | -----------------------  ------------
+2021-04-15 09:42:03.232680 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #10 | fitting baseline...
+2021-04-15 09:42:03.234447 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #10 | fitted
+2021-04-15 09:42:03.237969 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #10 | saving snapshot...
+2021-04-15 09:42:03.241351 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #10 | saved
+2021-04-15 09:42:03.242138 CEST | -----------------------  ----------
+2021-04-15 09:42:03.242277 CEST | Iteration                 10
+2021-04-15 09:42:03.242393 CEST | AverageDiscountedReturn   59.1214
+2021-04-15 09:42:03.242507 CEST | AverageReturn             61.3647
+2021-04-15 09:42:03.242618 CEST | ExplainedVariance          0.19302
+2021-04-15 09:42:03.242728 CEST | NumTrajs                  57
+2021-04-15 09:42:03.242838 CEST | Entropy                    1.4184
+2021-04-15 09:42:03.242947 CEST | Perplexity                 4.13049
+2021-04-15 09:42:03.243057 CEST | StdReturn                 38.3014
+2021-04-15 09:42:03.243166 CEST | MaxReturn                199.91
+2021-04-15 09:42:03.243292 CEST | MinReturn                  9.98262
+2021-04-15 09:42:03.243400 CEST | AveragePolicyStd           0.999457
+2021-04-15 09:42:03.243508 CEST | TransfBits                 0
+2021-04-15 09:42:03.243617 CEST | TotalAverageReturn        59.1214
+2021-04-15 09:42:03.243725 CEST | -----------------------  ----------
+2021-04-15 09:42:03.433089 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #11 | fitting baseline...
+2021-04-15 09:42:03.434791 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #11 | fitted
+2021-04-15 09:42:03.438421 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #11 | saving snapshot...
+2021-04-15 09:42:03.441644 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #11 | saved
+2021-04-15 09:42:03.442386 CEST | -----------------------  -----------
+2021-04-15 09:42:03.442540 CEST | Iteration                 11
+2021-04-15 09:42:03.442675 CEST | AverageDiscountedReturn   66.485
+2021-04-15 09:42:03.442809 CEST | AverageReturn             70.1634
+2021-04-15 09:42:03.442943 CEST | ExplainedVariance          0.0883354
+2021-04-15 09:42:03.443075 CEST | NumTrajs                  50
+2021-04-15 09:42:03.443204 CEST | Entropy                    1.41867
+2021-04-15 09:42:03.443336 CEST | Perplexity                 4.13162
+2021-04-15 09:42:03.443467 CEST | StdReturn                 59.3241
+2021-04-15 09:42:03.443595 CEST | MaxReturn                279.874
+2021-04-15 09:42:03.443725 CEST | MinReturn                  9.98077
+2021-04-15 09:42:03.443856 CEST | AveragePolicyStd           0.99973
+2021-04-15 09:42:03.444021 CEST | TransfBits                 0
+2021-04-15 09:42:03.444151 CEST | TotalAverageReturn        66.485
+2021-04-15 09:42:03.444280 CEST | -----------------------  -----------
+2021-04-15 09:42:03.660492 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #12 | fitting baseline...
+2021-04-15 09:42:03.662639 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #12 | fitted
+2021-04-15 09:42:03.666860 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #12 | saving snapshot...
+2021-04-15 09:42:03.671093 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #12 | saved
+2021-04-15 09:42:03.672475 CEST | -----------------------  -----------
+2021-04-15 09:42:03.672785 CEST | Iteration                 12
+2021-04-15 09:42:03.673029 CEST | AverageDiscountedReturn   72.9629
+2021-04-15 09:42:03.673267 CEST | AverageReturn             77.7857
+2021-04-15 09:42:03.673490 CEST | ExplainedVariance         -0.0388958
+2021-04-15 09:42:03.673730 CEST | NumTrajs                  46
+2021-04-15 09:42:03.673975 CEST | Entropy                    1.4186
+2021-04-15 09:42:03.674220 CEST | Perplexity                 4.13134
+2021-04-15 09:42:03.674468 CEST | StdReturn                 70.8709
+2021-04-15 09:42:03.674751 CEST | MaxReturn                379.893
+2021-04-15 09:42:03.674953 CEST | MinReturn                  0
+2021-04-15 09:42:03.675165 CEST | AveragePolicyStd           0.999664
+2021-04-15 09:42:03.675369 CEST | TransfBits                 0
+2021-04-15 09:42:03.675542 CEST | TotalAverageReturn        72.9629
+2021-04-15 09:42:03.675731 CEST | -----------------------  -----------
+2021-04-15 09:42:03.883955 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #13 | fitting baseline...
+2021-04-15 09:42:03.886237 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #13 | fitted
+2021-04-15 09:42:03.890768 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #13 | saving snapshot...
+2021-04-15 09:42:03.894688 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #13 | saved
+2021-04-15 09:42:03.895579 CEST | -----------------------  ----------
+2021-04-15 09:42:03.895745 CEST | Iteration                 13
+2021-04-15 09:42:03.895898 CEST | AverageDiscountedReturn   50.7743
+2021-04-15 09:42:03.896079 CEST | AverageReturn             52.3899
+2021-04-15 09:42:03.896226 CEST | ExplainedVariance          0.214527
+2021-04-15 09:42:03.896371 CEST | NumTrajs                  66
+2021-04-15 09:42:03.896518 CEST | Entropy                    1.41858
+2021-04-15 09:42:03.896660 CEST | Perplexity                 4.13126
+2021-04-15 09:42:03.896805 CEST | StdReturn                 33.0204
+2021-04-15 09:42:03.896948 CEST | MaxReturn                159.958
+2021-04-15 09:42:03.897092 CEST | MinReturn                  0
+2021-04-15 09:42:03.897236 CEST | AveragePolicyStd           0.999643
+2021-04-15 09:42:03.897377 CEST | TransfBits                 0
+2021-04-15 09:42:03.897523 CEST | TotalAverageReturn        50.7743
+2021-04-15 09:42:03.897664 CEST | -----------------------  ----------
+2021-04-15 09:42:04.069698 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #14 | fitting baseline...
+2021-04-15 09:42:04.071260 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #14 | fitted
+2021-04-15 09:42:04.074133 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #14 | saving snapshot...
+2021-04-15 09:42:04.077169 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #14 | saved
+2021-04-15 09:42:04.077905 CEST | -----------------------  ----------
+2021-04-15 09:42:04.078044 CEST | Iteration                 14
+2021-04-15 09:42:04.078210 CEST | AverageDiscountedReturn   61.4922
+2021-04-15 09:42:04.078371 CEST | AverageReturn             64.2115
+2021-04-15 09:42:04.078525 CEST | ExplainedVariance         -0.099708
+2021-04-15 09:42:04.078677 CEST | NumTrajs                  54
+2021-04-15 09:42:04.078819 CEST | Entropy                    1.41867
+2021-04-15 09:42:04.078972 CEST | Perplexity                 4.13164
+2021-04-15 09:42:04.079137 CEST | StdReturn                 46.6977
+2021-04-15 09:42:04.079301 CEST | MaxReturn                249.775
+2021-04-15 09:42:04.079478 CEST | MinReturn                  9.98569
+2021-04-15 09:42:04.079662 CEST | AveragePolicyStd           0.999735
+2021-04-15 09:42:04.079795 CEST | TransfBits                 0
+2021-04-15 09:42:04.079947 CEST | TotalAverageReturn        61.4922
+2021-04-15 09:42:04.080068 CEST | -----------------------  ----------
+2021-04-15 09:42:04.274794 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #15 | fitting baseline...
+2021-04-15 09:42:04.276418 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #15 | fitted
+2021-04-15 09:42:04.279984 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #15 | saving snapshot...
+2021-04-15 09:42:04.283146 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #15 | saved
+2021-04-15 09:42:04.283878 CEST | -----------------------  ----------
+2021-04-15 09:42:04.284039 CEST | Iteration                 15
+2021-04-15 09:42:04.284166 CEST | AverageDiscountedReturn   69.9972
+2021-04-15 09:42:04.284295 CEST | AverageReturn             73.8346
+2021-04-15 09:42:04.284426 CEST | ExplainedVariance          0.128116
+2021-04-15 09:42:04.284552 CEST | NumTrajs                  49
+2021-04-15 09:42:04.284674 CEST | Entropy                    1.41868
+2021-04-15 09:42:04.284801 CEST | Perplexity                 4.13167
+2021-04-15 09:42:04.284924 CEST | StdReturn                 57.509
+2021-04-15 09:42:04.285049 CEST | MaxReturn                229.937
+2021-04-15 09:42:04.285171 CEST | MinReturn                  0
+2021-04-15 09:42:04.285295 CEST | AveragePolicyStd           0.999744
+2021-04-15 09:42:04.285420 CEST | TransfBits                 0
+2021-04-15 09:42:04.285546 CEST | TotalAverageReturn        69.9972
+2021-04-15 09:42:04.285674 CEST | -----------------------  ----------
+2021-04-15 09:42:04.463105 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #16 | fitting baseline...
+2021-04-15 09:42:04.464588 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #16 | fitted
+2021-04-15 09:42:04.467530 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #16 | saving snapshot...
+2021-04-15 09:42:04.470498 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #16 | saved
+2021-04-15 09:42:04.471214 CEST | -----------------------  ----------
+2021-04-15 09:42:04.471350 CEST | Iteration                 16
+2021-04-15 09:42:04.471473 CEST | AverageDiscountedReturn   77.8582
+2021-04-15 09:42:04.471592 CEST | AverageReturn             81.9422
+2021-04-15 09:42:04.471736 CEST | ExplainedVariance          0.263014
+2021-04-15 09:42:04.471865 CEST | NumTrajs                  45
+2021-04-15 09:42:04.472006 CEST | Entropy                    1.41854
+2021-04-15 09:42:04.472123 CEST | Perplexity                 4.1311
+2021-04-15 09:42:04.472239 CEST | StdReturn                 51.2486
+2021-04-15 09:42:04.472356 CEST | MaxReturn                259.821
+2021-04-15 09:42:04.472475 CEST | MinReturn                 19.965
+2021-04-15 09:42:04.472594 CEST | AveragePolicyStd           0.999605
+2021-04-15 09:42:04.472707 CEST | TransfBits                 0
+2021-04-15 09:42:04.472821 CEST | TotalAverageReturn        77.8582
+2021-04-15 09:42:04.472935 CEST | -----------------------  ----------
+2021-04-15 09:42:04.646980 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #17 | fitting baseline...
+2021-04-15 09:42:04.648994 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #17 | fitted
+2021-04-15 09:42:04.652693 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #17 | saving snapshot...
+2021-04-15 09:42:04.655718 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #17 | saved
+2021-04-15 09:42:04.656497 CEST | -----------------------  ----------
+2021-04-15 09:42:04.656651 CEST | Iteration                 17
+2021-04-15 09:42:04.656793 CEST | AverageDiscountedReturn   62.1067
+2021-04-15 09:42:04.656923 CEST | AverageReturn             64.7734
+2021-04-15 09:42:04.657059 CEST | ExplainedVariance          0.199899
+2021-04-15 09:42:04.657192 CEST | NumTrajs                  54
+2021-04-15 09:42:04.657328 CEST | Entropy                    1.41844
+2021-04-15 09:42:04.657462 CEST | Perplexity                 4.13068
+2021-04-15 09:42:04.657598 CEST | StdReturn                 44.4862
+2021-04-15 09:42:04.657731 CEST | MaxReturn                209.889
+2021-04-15 09:42:04.657866 CEST | MinReturn                  9.98168
+2021-04-15 09:42:04.657998 CEST | AveragePolicyStd           0.999504
+2021-04-15 09:42:04.658133 CEST | TransfBits                 0
+2021-04-15 09:42:04.658259 CEST | TotalAverageReturn        62.1067
+2021-04-15 09:42:04.658386 CEST | -----------------------  ----------
+2021-04-15 09:42:04.829754 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #18 | fitting baseline...
+2021-04-15 09:42:04.831123 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #18 | fitted
+2021-04-15 09:42:04.834557 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #18 | saving snapshot...
+2021-04-15 09:42:04.837507 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #18 | saved
+2021-04-15 09:42:04.838220 CEST | -----------------------  ----------
+2021-04-15 09:42:04.838354 CEST | Iteration                 18
+2021-04-15 09:42:04.838477 CEST | AverageDiscountedReturn   85.9567
+2021-04-15 09:42:04.838596 CEST | AverageReturn             91.1971
+2021-04-15 09:42:04.838714 CEST | ExplainedVariance          0.106632
+2021-04-15 09:42:04.838831 CEST | NumTrajs                  40
+2021-04-15 09:42:04.838947 CEST | Entropy                    1.41818
+2021-04-15 09:42:04.839063 CEST | Perplexity                 4.12958
+2021-04-15 09:42:04.839229 CEST | StdReturn                 59.7298
+2021-04-15 09:42:04.839368 CEST | MaxReturn                239.929
+2021-04-15 09:42:04.839502 CEST | MinReturn                  9.98706
+2021-04-15 09:42:04.839649 CEST | AveragePolicyStd           0.999237
+2021-04-15 09:42:04.839769 CEST | TransfBits                 0
+2021-04-15 09:42:04.839918 CEST | TotalAverageReturn        85.9567
+2021-04-15 09:42:04.840046 CEST | -----------------------  ----------
+2021-04-15 09:42:05.008227 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #19 | fitting baseline...
+2021-04-15 09:42:05.010483 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #19 | fitted
+2021-04-15 09:42:05.013840 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #19 | saving snapshot...
+2021-04-15 09:42:05.017472 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #19 | saved
+2021-04-15 09:42:05.018207 CEST | -----------------------  ----------
+2021-04-15 09:42:05.018342 CEST | Iteration                 19
+2021-04-15 09:42:05.018463 CEST | AverageDiscountedReturn   65.0828
+2021-04-15 09:42:05.018581 CEST | AverageReturn             68.0284
+2021-04-15 09:42:05.018704 CEST | ExplainedVariance          0.23749
+2021-04-15 09:42:05.018824 CEST | NumTrajs                  52
+2021-04-15 09:42:05.018939 CEST | Entropy                    1.41801
+2021-04-15 09:42:05.019055 CEST | Perplexity                 4.12888
+2021-04-15 09:42:05.019170 CEST | StdReturn                 46.3902
+2021-04-15 09:42:05.019285 CEST | MaxReturn                189.953
+2021-04-15 09:42:05.019400 CEST | MinReturn                  0
+2021-04-15 09:42:05.019516 CEST | AveragePolicyStd           0.999069
+2021-04-15 09:42:05.019631 CEST | TransfBits                 0
+2021-04-15 09:42:05.019746 CEST | TotalAverageReturn        65.0828
+2021-04-15 09:42:05.019860 CEST | -----------------------  ----------
+2021-04-15 09:42:05.200988 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #20 | fitting baseline...
+2021-04-15 09:42:05.202583 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #20 | fitted
+2021-04-15 09:42:05.205941 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #20 | saving snapshot...
+2021-04-15 09:42:05.208933 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #20 | saved
+2021-04-15 09:42:05.209666 CEST | -----------------------  ----------
+2021-04-15 09:42:05.209805 CEST | Iteration                 20
+2021-04-15 09:42:05.209931 CEST | AverageDiscountedReturn   78.6948
+2021-04-15 09:42:05.210053 CEST | AverageReturn             83.3556
+2021-04-15 09:42:05.210174 CEST | ExplainedVariance          0.205087
+2021-04-15 09:42:05.210293 CEST | NumTrajs                  44
+2021-04-15 09:42:05.210411 CEST | Entropy                    1.41763
+2021-04-15 09:42:05.210530 CEST | Perplexity                 4.12732
+2021-04-15 09:42:05.210648 CEST | StdReturn                 60.8757
+2021-04-15 09:42:05.210766 CEST | MaxReturn                339.847
+2021-04-15 09:42:05.210884 CEST | MinReturn                  0
+2021-04-15 09:42:05.211002 CEST | AveragePolicyStd           0.99869
+2021-04-15 09:42:05.211169 CEST | TransfBits                 0
+2021-04-15 09:42:05.211330 CEST | TotalAverageReturn        78.6948
+2021-04-15 09:42:05.211458 CEST | -----------------------  ----------
+2021-04-15 09:42:05.384805 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #21 | fitting baseline...
+2021-04-15 09:42:05.386686 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #21 | fitted
+2021-04-15 09:42:05.389936 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #21 | saving snapshot...
+2021-04-15 09:42:05.393067 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #21 | saved
+2021-04-15 09:42:05.393884 CEST | -----------------------  ----------
+2021-04-15 09:42:05.394042 CEST | Iteration                 21
+2021-04-15 09:42:05.394199 CEST | AverageDiscountedReturn   85.384
+2021-04-15 09:42:05.394373 CEST | AverageReturn             90.9202
+2021-04-15 09:42:05.394572 CEST | ExplainedVariance          0.197571
+2021-04-15 09:42:05.394743 CEST | NumTrajs                  41
+2021-04-15 09:42:05.394919 CEST | Entropy                    1.41724
+2021-04-15 09:42:05.395088 CEST | Perplexity                 4.1257
+2021-04-15 09:42:05.395262 CEST | StdReturn                 65.676
+2021-04-15 09:42:05.395433 CEST | MaxReturn                309.891
+2021-04-15 09:42:05.395601 CEST | MinReturn                  9.98058
+2021-04-15 09:42:05.395765 CEST | AveragePolicyStd           0.998298
+2021-04-15 09:42:05.395944 CEST | TransfBits                 0
+2021-04-15 09:42:05.396088 CEST | TotalAverageReturn        85.384
+2021-04-15 09:42:05.396222 CEST | -----------------------  ----------
+2021-04-15 09:42:05.564707 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #22 | fitting baseline...
+2021-04-15 09:42:05.566052 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #22 | fitted
+2021-04-15 09:42:05.569063 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #22 | saving snapshot...
+2021-04-15 09:42:05.572771 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #22 | saved
+2021-04-15 09:42:05.573585 CEST | -----------------------  ----------
+2021-04-15 09:42:05.573724 CEST | Iteration                 22
+2021-04-15 09:42:05.573851 CEST | AverageDiscountedReturn   89.1238
+2021-04-15 09:42:05.573973 CEST | AverageReturn             94.5534
+2021-04-15 09:42:05.574094 CEST | ExplainedVariance          0.230114
+2021-04-15 09:42:05.574214 CEST | NumTrajs                  39
+2021-04-15 09:42:05.574335 CEST | Entropy                    1.41689
+2021-04-15 09:42:05.574454 CEST | Perplexity                 4.12426
+2021-04-15 09:42:05.574573 CEST | StdReturn                 58.3231
+2021-04-15 09:42:05.574692 CEST | MaxReturn                259.842
+2021-04-15 09:42:05.574811 CEST | MinReturn                  9.98467
+2021-04-15 09:42:05.574930 CEST | AveragePolicyStd           0.997949
+2021-04-15 09:42:05.575049 CEST | TransfBits                 0
+2021-04-15 09:42:05.575169 CEST | TotalAverageReturn        89.1238
+2021-04-15 09:42:05.575288 CEST | -----------------------  ----------
+2021-04-15 09:42:05.778502 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #23 | fitting baseline...
+2021-04-15 09:42:05.779831 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #23 | fitted
+2021-04-15 09:42:05.782611 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #23 | saving snapshot...
+2021-04-15 09:42:05.785505 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #23 | saved
+2021-04-15 09:42:05.786235 CEST | -----------------------  ----------
+2021-04-15 09:42:05.786377 CEST | Iteration                 23
+2021-04-15 09:42:05.786507 CEST | AverageDiscountedReturn   85.7693
+2021-04-15 09:42:05.786631 CEST | AverageReturn             91.4357
+2021-04-15 09:42:05.786755 CEST | ExplainedVariance          0.16407
+2021-04-15 09:42:05.786876 CEST | NumTrajs                  40
+2021-04-15 09:42:05.786994 CEST | Entropy                    1.4164
+2021-04-15 09:42:05.787115 CEST | Perplexity                 4.12227
+2021-04-15 09:42:05.787234 CEST | StdReturn                 67.5517
+2021-04-15 09:42:05.787354 CEST | MaxReturn                349.81
+2021-04-15 09:42:05.787474 CEST | MinReturn                  9.98135
+2021-04-15 09:42:05.787596 CEST | AveragePolicyStd           0.997468
+2021-04-15 09:42:05.787717 CEST | TransfBits                 0
+2021-04-15 09:42:05.787837 CEST | TotalAverageReturn        85.7693
+2021-04-15 09:42:05.788017 CEST | -----------------------  ----------
+2021-04-15 09:42:05.988257 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #24 | fitting baseline...
+2021-04-15 09:42:05.989461 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #24 | fitted
+2021-04-15 09:42:05.992865 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #24 | saving snapshot...
+2021-04-15 09:42:05.996226 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #24 | saved
+2021-04-15 09:42:05.997041 CEST | -----------------------  ----------
+2021-04-15 09:42:05.997193 CEST | Iteration                 24
+2021-04-15 09:42:05.997331 CEST | AverageDiscountedReturn   91.1493
+2021-04-15 09:42:05.997466 CEST | AverageReturn             98.0479
+2021-04-15 09:42:05.997599 CEST | ExplainedVariance          0.205749
+2021-04-15 09:42:05.997733 CEST | NumTrajs                  37
+2021-04-15 09:42:05.997865 CEST | Entropy                    1.41594
+2021-04-15 09:42:05.997996 CEST | Perplexity                 4.12034
+2021-04-15 09:42:05.998129 CEST | StdReturn                 77.5666
+2021-04-15 09:42:05.998262 CEST | MaxReturn                309.901
+2021-04-15 09:42:05.998394 CEST | MinReturn                  0
+2021-04-15 09:42:05.998526 CEST | AveragePolicyStd           0.997002
+2021-04-15 09:42:05.998658 CEST | TransfBits                 0
+2021-04-15 09:42:05.998789 CEST | TotalAverageReturn        91.1493
+2021-04-15 09:42:05.998921 CEST | -----------------------  ----------
+2021-04-15 09:42:06.174967 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #25 | fitting baseline...
+2021-04-15 09:42:06.176353 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #25 | fitted
+2021-04-15 09:42:06.180176 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #25 | saving snapshot...
+2021-04-15 09:42:06.183594 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #25 | saved
+2021-04-15 09:42:06.184448 CEST | -----------------------  ----------
+2021-04-15 09:42:06.184609 CEST | Iteration                 25
+2021-04-15 09:42:06.184753 CEST | AverageDiscountedReturn   98.356
+2021-04-15 09:42:06.184894 CEST | AverageReturn            106.224
+2021-04-15 09:42:06.185035 CEST | ExplainedVariance          0.264241
+2021-04-15 09:42:06.185176 CEST | NumTrajs                  35
+2021-04-15 09:42:06.185315 CEST | Entropy                    1.41566
+2021-04-15 09:42:06.185454 CEST | Perplexity                 4.11922
+2021-04-15 09:42:06.185593 CEST | StdReturn                 80.65
+2021-04-15 09:42:06.185731 CEST | MaxReturn                299.889
+2021-04-15 09:42:06.185869 CEST | MinReturn                  0
+2021-04-15 09:42:06.186007 CEST | AveragePolicyStd           0.99673
+2021-04-15 09:42:06.186144 CEST | TransfBits                 0
+2021-04-15 09:42:06.186283 CEST | TotalAverageReturn        98.356
+2021-04-15 09:42:06.186421 CEST | -----------------------  ----------
+2021-04-15 09:42:06.387878 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #26 | fitting baseline...
+2021-04-15 09:42:06.390251 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #26 | fitted
+2021-04-15 09:42:06.409604 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #26 | saving snapshot...
+2021-04-15 09:42:06.413611 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #26 | saved
+2021-04-15 09:42:06.414658 CEST | -----------------------  ----------
+2021-04-15 09:42:06.414911 CEST | Iteration                 26
+2021-04-15 09:42:06.415069 CEST | AverageDiscountedReturn   79.1484
+2021-04-15 09:42:06.415222 CEST | AverageReturn             83.2016
+2021-04-15 09:42:06.415374 CEST | ExplainedVariance          0.341464
+2021-04-15 09:42:06.415527 CEST | NumTrajs                  43
+2021-04-15 09:42:06.415681 CEST | Entropy                    1.41538
+2021-04-15 09:42:06.415832 CEST | Perplexity                 4.11807
+2021-04-15 09:42:06.416011 CEST | StdReturn                 48.193
+2021-04-15 09:42:06.416166 CEST | MaxReturn                209.854
+2021-04-15 09:42:06.416316 CEST | MinReturn                  9.98162
+2021-04-15 09:42:06.416466 CEST | AveragePolicyStd           0.996451
+2021-04-15 09:42:06.416617 CEST | TransfBits                 0
+2021-04-15 09:42:06.416768 CEST | TotalAverageReturn        79.1484
+2021-04-15 09:42:06.416919 CEST | -----------------------  ----------
+2021-04-15 09:42:06.613453 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #27 | fitting baseline...
+2021-04-15 09:42:06.614709 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #27 | fitted
+2021-04-15 09:42:06.618209 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #27 | saving snapshot...
+2021-04-15 09:42:06.621623 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #27 | saved
+2021-04-15 09:42:06.622444 CEST | -----------------------  ----------
+2021-04-15 09:42:06.622601 CEST | Iteration                 27
+2021-04-15 09:42:06.622744 CEST | AverageDiscountedReturn   97.2478
+2021-04-15 09:42:06.622884 CEST | AverageReturn            104.378
+2021-04-15 09:42:06.623024 CEST | ExplainedVariance          0.231038
+2021-04-15 09:42:06.623163 CEST | NumTrajs                  36
+2021-04-15 09:42:06.623301 CEST | Entropy                    1.41497
+2021-04-15 09:42:06.623439 CEST | Perplexity                 4.11635
+2021-04-15 09:42:06.623577 CEST | StdReturn                 72.4485
+2021-04-15 09:42:06.623714 CEST | MaxReturn                299.827
+2021-04-15 09:42:06.623857 CEST | MinReturn                  0
+2021-04-15 09:42:06.624014 CEST | AveragePolicyStd           0.996036
+2021-04-15 09:42:06.624152 CEST | TransfBits                 0
+2021-04-15 09:42:06.624289 CEST | TotalAverageReturn        97.2478
+2021-04-15 09:42:06.624426 CEST | -----------------------  ----------
+2021-04-15 09:42:06.843639 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #28 | fitting baseline...
+2021-04-15 09:42:06.845224 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #28 | fitted
+2021-04-15 09:42:06.848813 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #28 | saving snapshot...
+2021-04-15 09:42:06.852362 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #28 | saved
+2021-04-15 09:42:06.853178 CEST | -----------------------  ----------
+2021-04-15 09:42:06.853334 CEST | Iteration                 28
+2021-04-15 09:42:06.853474 CEST | AverageDiscountedReturn   76.4602
+2021-04-15 09:42:06.853612 CEST | AverageReturn             80.6127
+2021-04-15 09:42:06.853751 CEST | ExplainedVariance          0.326829
+2021-04-15 09:42:06.853888 CEST | NumTrajs                  45
+2021-04-15 09:42:06.854019 CEST | Entropy                    1.41457
+2021-04-15 09:42:06.854155 CEST | Perplexity                 4.11472
+2021-04-15 09:42:06.854289 CEST | StdReturn                 54.6514
+2021-04-15 09:42:06.854422 CEST | MaxReturn                259.931
+2021-04-15 09:42:06.854553 CEST | MinReturn                  9.98737
+2021-04-15 09:42:06.854688 CEST | AveragePolicyStd           0.995643
+2021-04-15 09:42:06.854822 CEST | TransfBits                 0
+2021-04-15 09:42:06.854955 CEST | TotalAverageReturn        76.4602
+2021-04-15 09:42:06.855085 CEST | -----------------------  ----------
+2021-04-15 09:42:07.029528 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #29 | fitting baseline...
+2021-04-15 09:42:07.030812 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #29 | fitted
+2021-04-15 09:42:07.033858 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #29 | saving snapshot...
+2021-04-15 09:42:07.037079 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #29 | saved
+2021-04-15 09:42:07.038099 CEST | -----------------------  ----------
+2021-04-15 09:42:07.038376 CEST | Iteration                 29
+2021-04-15 09:42:07.038625 CEST | AverageDiscountedReturn   93.7821
+2021-04-15 09:42:07.038791 CEST | AverageReturn            101.876
+2021-04-15 09:42:07.038938 CEST | ExplainedVariance          0.066722
+2021-04-15 09:42:07.039077 CEST | NumTrajs                  36
+2021-04-15 09:42:07.039217 CEST | Entropy                    1.41404
+2021-04-15 09:42:07.039358 CEST | Perplexity                 4.11255
+2021-04-15 09:42:07.039493 CEST | StdReturn                 91.6612
+2021-04-15 09:42:07.039636 CEST | MaxReturn                519.723
+2021-04-15 09:42:07.039768 CEST | MinReturn                  0
+2021-04-15 09:42:07.039929 CEST | AveragePolicyStd           0.995117
+2021-04-15 09:42:07.040078 CEST | TransfBits                 0
+2021-04-15 09:42:07.040216 CEST | TotalAverageReturn        93.7821
+2021-04-15 09:42:07.040352 CEST | -----------------------  ----------
+2021-04-15 09:42:07.217264 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #30 | fitting baseline...
+2021-04-15 09:42:07.218600 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #30 | fitted
+2021-04-15 09:42:07.222196 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #30 | saving snapshot...
+2021-04-15 09:42:07.225820 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #30 | saved
+2021-04-15 09:42:07.226728 CEST | -----------------------  -----------
+2021-04-15 09:42:07.226889 CEST | Iteration                 30
+2021-04-15 09:42:07.227036 CEST | AverageDiscountedReturn   88.874
+2021-04-15 09:42:07.227179 CEST | AverageReturn             94.0367
+2021-04-15 09:42:07.227322 CEST | ExplainedVariance         -0.0339798
+2021-04-15 09:42:07.227474 CEST | NumTrajs                  39
+2021-04-15 09:42:07.227618 CEST | Entropy                    1.41352
+2021-04-15 09:42:07.227759 CEST | Perplexity                 4.11038
+2021-04-15 09:42:07.227899 CEST | StdReturn                 53.3567
+2021-04-15 09:42:07.228072 CEST | MaxReturn                209.86
+2021-04-15 09:42:07.228214 CEST | MinReturn                  9.98612
+2021-04-15 09:42:07.228354 CEST | AveragePolicyStd           0.994592
+2021-04-15 09:42:07.228494 CEST | TransfBits                 0
+2021-04-15 09:42:07.228635 CEST | TotalAverageReturn        88.874
+2021-04-15 09:42:07.228773 CEST | -----------------------  -----------
+2021-04-15 09:42:07.406740 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #31 | fitting baseline...
+2021-04-15 09:42:07.408022 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #31 | fitted
+2021-04-15 09:42:07.411508 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #31 | saving snapshot...
+2021-04-15 09:42:07.415198 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #31 | saved
+2021-04-15 09:42:07.416094 CEST | -----------------------  ----------
+2021-04-15 09:42:07.416254 CEST | Iteration                 31
+2021-04-15 09:42:07.416399 CEST | AverageDiscountedReturn   94.884
+2021-04-15 09:42:07.416539 CEST | AverageReturn            102.157
+2021-04-15 09:42:07.416679 CEST | ExplainedVariance          0.239737
+2021-04-15 09:42:07.416818 CEST | NumTrajs                  36
+2021-04-15 09:42:07.416955 CEST | Entropy                    1.41283
+2021-04-15 09:42:07.417093 CEST | Perplexity                 4.10757
+2021-04-15 09:42:07.417233 CEST | StdReturn                 78.1534
+2021-04-15 09:42:07.417373 CEST | MaxReturn                329.907
+2021-04-15 09:42:07.417510 CEST | MinReturn                 19.9622
+2021-04-15 09:42:07.417647 CEST | AveragePolicyStd           0.993911
+2021-04-15 09:42:07.417785 CEST | TransfBits                 0
+2021-04-15 09:42:07.417924 CEST | TotalAverageReturn        94.884
+2021-04-15 09:42:07.418061 CEST | -----------------------  ----------
+2021-04-15 09:42:07.618239 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #32 | fitting baseline...
+2021-04-15 09:42:07.619504 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #32 | fitted
+2021-04-15 09:42:07.622428 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #32 | saving snapshot...
+2021-04-15 09:42:07.625382 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #32 | saved
+2021-04-15 09:42:07.626103 CEST | -----------------------  ----------
+2021-04-15 09:42:07.626243 CEST | Iteration                 32
+2021-04-15 09:42:07.626370 CEST | AverageDiscountedReturn   93.6195
+2021-04-15 09:42:07.626493 CEST | AverageReturn            102.365
+2021-04-15 09:42:07.626614 CEST | ExplainedVariance          0.194287
+2021-04-15 09:42:07.626738 CEST | NumTrajs                  37
+2021-04-15 09:42:07.626858 CEST | Entropy                    1.41212
+2021-04-15 09:42:07.626976 CEST | Perplexity                 4.10464
+2021-04-15 09:42:07.627093 CEST | StdReturn                 97.6755
+2021-04-15 09:42:07.627212 CEST | MaxReturn                409.785
+2021-04-15 09:42:07.627330 CEST | MinReturn                  0
+2021-04-15 09:42:07.627447 CEST | AveragePolicyStd           0.993203
+2021-04-15 09:42:07.627565 CEST | TransfBits                 0
+2021-04-15 09:42:07.627682 CEST | TotalAverageReturn        93.6195
+2021-04-15 09:42:07.627800 CEST | -----------------------  ----------
+2021-04-15 09:42:07.799290 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #33 | fitting baseline...
+2021-04-15 09:42:07.800588 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #33 | fitted
+2021-04-15 09:42:07.804046 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #33 | saving snapshot...
+2021-04-15 09:42:07.807012 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #33 | saved
+2021-04-15 09:42:07.807745 CEST | -----------------------  ----------
+2021-04-15 09:42:07.807886 CEST | Iteration                 33
+2021-04-15 09:42:07.808063 CEST | AverageDiscountedReturn  103.895
+2021-04-15 09:42:07.808190 CEST | AverageReturn            112.581
+2021-04-15 09:42:07.808314 CEST | ExplainedVariance          0.250946
+2021-04-15 09:42:07.808437 CEST | NumTrajs                  34
+2021-04-15 09:42:07.808560 CEST | Entropy                    1.41133
+2021-04-15 09:42:07.808683 CEST | Perplexity                 4.10142
+2021-04-15 09:42:07.808804 CEST | StdReturn                 83.1909
+2021-04-15 09:42:07.808924 CEST | MaxReturn                309.885
+2021-04-15 09:42:07.809045 CEST | MinReturn                  0
+2021-04-15 09:42:07.809165 CEST | AveragePolicyStd           0.992422
+2021-04-15 09:42:07.809286 CEST | TransfBits                 0
+2021-04-15 09:42:07.809405 CEST | TotalAverageReturn       103.895
+2021-04-15 09:42:07.809526 CEST | -----------------------  ----------
+2021-04-15 09:42:07.976535 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #34 | fitting baseline...
+2021-04-15 09:42:07.977848 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #34 | fitted
+2021-04-15 09:42:07.981117 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #34 | saving snapshot...
+2021-04-15 09:42:07.984157 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #34 | saved
+2021-04-15 09:42:07.984922 CEST | -----------------------  ----------
+2021-04-15 09:42:07.985073 CEST | Iteration                 34
+2021-04-15 09:42:07.985216 CEST | AverageDiscountedReturn  104.24
+2021-04-15 09:42:07.985352 CEST | AverageReturn            112.659
+2021-04-15 09:42:07.985484 CEST | ExplainedVariance          0.287593
+2021-04-15 09:42:07.985615 CEST | NumTrajs                  33
+2021-04-15 09:42:07.985747 CEST | Entropy                    1.41049
+2021-04-15 09:42:07.985890 CEST | Perplexity                 4.09798
+2021-04-15 09:42:07.986033 CEST | StdReturn                 79.8764
+2021-04-15 09:42:07.986164 CEST | MaxReturn                349.909
+2021-04-15 09:42:07.986309 CEST | MinReturn                  9.98118
+2021-04-15 09:42:07.986437 CEST | AveragePolicyStd           0.99159
+2021-04-15 09:42:07.986570 CEST | TransfBits                 0
+2021-04-15 09:42:07.986699 CEST | TotalAverageReturn       104.24
+2021-04-15 09:42:07.986828 CEST | -----------------------  ----------
+2021-04-15 09:42:08.169380 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #35 | fitting baseline...
+2021-04-15 09:42:08.170478 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #35 | fitted
+2021-04-15 09:42:08.173939 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #35 | saving snapshot...
+2021-04-15 09:42:08.177330 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #35 | saved
+2021-04-15 09:42:08.178170 CEST | -----------------------  ----------
+2021-04-15 09:42:08.178328 CEST | Iteration                 35
+2021-04-15 09:42:08.178471 CEST | AverageDiscountedReturn  121.939
+2021-04-15 09:42:08.178610 CEST | AverageReturn            133.498
+2021-04-15 09:42:08.178746 CEST | ExplainedVariance          0.242941
+2021-04-15 09:42:08.178882 CEST | NumTrajs                  28
+2021-04-15 09:42:08.179016 CEST | Entropy                    1.40967
+2021-04-15 09:42:08.179151 CEST | Perplexity                 4.09458
+2021-04-15 09:42:08.179286 CEST | StdReturn                 91.4352
+2021-04-15 09:42:08.179420 CEST | MaxReturn                369.81
+2021-04-15 09:42:08.179554 CEST | MinReturn                 19.9754
+2021-04-15 09:42:08.179691 CEST | AveragePolicyStd           0.990769
+2021-04-15 09:42:08.179825 CEST | TransfBits                 0
+2021-04-15 09:42:08.179989 CEST | TotalAverageReturn       121.939
+2021-04-15 09:42:08.180126 CEST | -----------------------  ----------
+2021-04-15 09:42:08.363278 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #36 | fitting baseline...
+2021-04-15 09:42:08.364591 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #36 | fitted
+2021-04-15 09:42:08.368080 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #36 | saving snapshot...
+2021-04-15 09:42:08.370872 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #36 | saved
+2021-04-15 09:42:08.371578 CEST | -----------------------  ----------
+2021-04-15 09:42:08.371715 CEST | Iteration                 36
+2021-04-15 09:42:08.371836 CEST | AverageDiscountedReturn  112.178
+2021-04-15 09:42:08.371980 CEST | AverageReturn            120.562
+2021-04-15 09:42:08.372096 CEST | ExplainedVariance          0.376196
+2021-04-15 09:42:08.372211 CEST | NumTrajs                  31
+2021-04-15 09:42:08.372326 CEST | Entropy                    1.40896
+2021-04-15 09:42:08.372441 CEST | Perplexity                 4.09169
+2021-04-15 09:42:08.372557 CEST | StdReturn                 66.1701
+2021-04-15 09:42:08.372673 CEST | MaxReturn                289.896
+2021-04-15 09:42:08.372788 CEST | MinReturn                  9.98057
+2021-04-15 09:42:08.372902 CEST | AveragePolicyStd           0.990069
+2021-04-15 09:42:08.373026 CEST | TransfBits                 0
+2021-04-15 09:42:08.373141 CEST | TotalAverageReturn       112.178
+2021-04-15 09:42:08.373256 CEST | -----------------------  ----------
+2021-04-15 09:42:08.552329 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #37 | fitting baseline...
+2021-04-15 09:42:08.553816 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #37 | fitted
+2021-04-15 09:42:08.557413 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #37 | saving snapshot...
+2021-04-15 09:42:08.560641 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #37 | saved
+2021-04-15 09:42:08.561418 CEST | -----------------------  -----------
+2021-04-15 09:42:08.561583 CEST | Iteration                 37
+2021-04-15 09:42:08.561728 CEST | AverageDiscountedReturn   86.3126
+2021-04-15 09:42:08.561862 CEST | AverageReturn             94.0419
+2021-04-15 09:42:08.562000 CEST | ExplainedVariance          0.0757657
+2021-04-15 09:42:08.562137 CEST | NumTrajs                  39
+2021-04-15 09:42:08.562270 CEST | Entropy                    1.40823
+2021-04-15 09:42:08.562412 CEST | Perplexity                 4.08872
+2021-04-15 09:42:08.562552 CEST | StdReturn                 94.6164
+2021-04-15 09:42:08.562692 CEST | MaxReturn                489.862
+2021-04-15 09:42:08.562833 CEST | MinReturn                  0
+2021-04-15 09:42:08.562973 CEST | AveragePolicyStd           0.98935
+2021-04-15 09:42:08.563112 CEST | TransfBits                 0
+2021-04-15 09:42:08.563250 CEST | TotalAverageReturn        86.3126
+2021-04-15 09:42:08.563386 CEST | -----------------------  -----------
+2021-04-15 09:42:08.734497 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #38 | fitting baseline...
+2021-04-15 09:42:08.735936 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #38 | fitted
+2021-04-15 09:42:08.739508 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #38 | saving snapshot...
+2021-04-15 09:42:08.742804 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #38 | saved
+2021-04-15 09:42:08.743638 CEST | -----------------------  ----------
+2021-04-15 09:42:08.743796 CEST | Iteration                 38
+2021-04-15 09:42:08.744001 CEST | AverageDiscountedReturn  105.933
+2021-04-15 09:42:08.744165 CEST | AverageReturn            114.772
+2021-04-15 09:42:08.744331 CEST | ExplainedVariance          0.376033
+2021-04-15 09:42:08.744500 CEST | NumTrajs                  33
+2021-04-15 09:42:08.744661 CEST | Entropy                    1.40758
+2021-04-15 09:42:08.744825 CEST | Perplexity                 4.08604
+2021-04-15 09:42:08.744982 CEST | StdReturn                 82.4693
+2021-04-15 09:42:08.745140 CEST | MaxReturn                329.838
+2021-04-15 09:42:08.745299 CEST | MinReturn                  9.98154
+2021-04-15 09:42:08.745469 CEST | AveragePolicyStd           0.988702
+2021-04-15 09:42:08.745625 CEST | TransfBits                 0
+2021-04-15 09:42:08.745785 CEST | TotalAverageReturn       105.933
+2021-04-15 09:42:08.745942 CEST | -----------------------  ----------
+2021-04-15 09:42:08.919131 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #39 | fitting baseline...
+2021-04-15 09:42:08.920215 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #39 | fitted
+2021-04-15 09:42:08.923723 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #39 | saving snapshot...
+2021-04-15 09:42:08.927150 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #39 | saved
+2021-04-15 09:42:08.928043 CEST | -----------------------  ----------
+2021-04-15 09:42:08.928206 CEST | Iteration                 39
+2021-04-15 09:42:08.928355 CEST | AverageDiscountedReturn  128.463
+2021-04-15 09:42:08.928500 CEST | AverageReturn            144.535
+2021-04-15 09:42:08.928643 CEST | ExplainedVariance          0.303565
+2021-04-15 09:42:08.928785 CEST | NumTrajs                  26
+2021-04-15 09:42:08.928926 CEST | Entropy                    1.40695
+2021-04-15 09:42:08.929066 CEST | Perplexity                 4.08347
+2021-04-15 09:42:08.929209 CEST | StdReturn                126.986
+2021-04-15 09:42:08.929352 CEST | MaxReturn                449.864
+2021-04-15 09:42:08.929494 CEST | MinReturn                  9.98949
+2021-04-15 09:42:08.929634 CEST | AveragePolicyStd           0.98808
+2021-04-15 09:42:08.929776 CEST | TransfBits                 0
+2021-04-15 09:42:08.929918 CEST | TotalAverageReturn       128.463
+2021-04-15 09:42:08.930060 CEST | -----------------------  ----------
+2021-04-15 09:42:09.103156 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #40 | fitting baseline...
+2021-04-15 09:42:09.104497 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #40 | fitted
+2021-04-15 09:42:09.108172 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #40 | saving snapshot...
+2021-04-15 09:42:09.111420 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #40 | saved
+2021-04-15 09:42:09.112248 CEST | -----------------------  ----------
+2021-04-15 09:42:09.112410 CEST | Iteration                 40
+2021-04-15 09:42:09.112582 CEST | AverageDiscountedReturn  113.952
+2021-04-15 09:42:09.112747 CEST | AverageReturn            123.922
+2021-04-15 09:42:09.112913 CEST | ExplainedVariance          0.217122
+2021-04-15 09:42:09.113076 CEST | NumTrajs                  30
+2021-04-15 09:42:09.113242 CEST | Entropy                    1.40634
+2021-04-15 09:42:09.113407 CEST | Perplexity                 4.08097
+2021-04-15 09:42:09.113570 CEST | StdReturn                 84.2175
+2021-04-15 09:42:09.113732 CEST | MaxReturn                279.895
+2021-04-15 09:42:09.113897 CEST | MinReturn                  0
+2021-04-15 09:42:09.114059 CEST | AveragePolicyStd           0.987476
+2021-04-15 09:42:09.114218 CEST | TransfBits                 0
+2021-04-15 09:42:09.114377 CEST | TotalAverageReturn       113.952
+2021-04-15 09:42:09.114539 CEST | -----------------------  ----------
+2021-04-15 09:42:09.283434 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #41 | fitting baseline...
+2021-04-15 09:42:09.284618 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #41 | fitted
+2021-04-15 09:42:09.287560 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #41 | saving snapshot...
+2021-04-15 09:42:09.290559 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #41 | saved
+2021-04-15 09:42:09.291401 CEST | -----------------------  ----------
+2021-04-15 09:42:09.291553 CEST | Iteration                 41
+2021-04-15 09:42:09.291692 CEST | AverageDiscountedReturn  122.213
+2021-04-15 09:42:09.291828 CEST | AverageReturn            133.85
+2021-04-15 09:42:09.291984 CEST | ExplainedVariance          0.393828
+2021-04-15 09:42:09.292124 CEST | NumTrajs                  28
+2021-04-15 09:42:09.292258 CEST | Entropy                    1.4057
+2021-04-15 09:42:09.292404 CEST | Perplexity                 4.07838
+2021-04-15 09:42:09.292549 CEST | StdReturn                 91.5991
+2021-04-15 09:42:09.292680 CEST | MaxReturn                329.793
+2021-04-15 09:42:09.292823 CEST | MinReturn                  9.98084
+2021-04-15 09:42:09.292956 CEST | AveragePolicyStd           0.986849
+2021-04-15 09:42:09.293087 CEST | TransfBits                 0
+2021-04-15 09:42:09.293217 CEST | TotalAverageReturn       122.213
+2021-04-15 09:42:09.293347 CEST | -----------------------  ----------
+2021-04-15 09:42:09.471202 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #42 | fitting baseline...
+2021-04-15 09:42:09.472378 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #42 | fitted
+2021-04-15 09:42:09.475946 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #42 | saving snapshot...
+2021-04-15 09:42:09.479416 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #42 | saved
+2021-04-15 09:42:09.480317 CEST | -----------------------  ----------
+2021-04-15 09:42:09.480485 CEST | Iteration                 42
+2021-04-15 09:42:09.480637 CEST | AverageDiscountedReturn  121.079
+2021-04-15 09:42:09.480785 CEST | AverageReturn            131.29
+2021-04-15 09:42:09.480930 CEST | ExplainedVariance          0.331259
+2021-04-15 09:42:09.481077 CEST | NumTrajs                  29
+2021-04-15 09:42:09.481222 CEST | Entropy                    1.40508
+2021-04-15 09:42:09.481365 CEST | Perplexity                 4.07584
+2021-04-15 09:42:09.481508 CEST | StdReturn                 76.3414
+2021-04-15 09:42:09.481652 CEST | MaxReturn                319.812
+2021-04-15 09:42:09.481797 CEST | MinReturn                 19.9786
+2021-04-15 09:42:09.481939 CEST | AveragePolicyStd           0.986234
+2021-04-15 09:42:09.482083 CEST | TransfBits                 0
+2021-04-15 09:42:09.482228 CEST | TotalAverageReturn       121.079
+2021-04-15 09:42:09.482374 CEST | -----------------------  ----------
+2021-04-15 09:42:09.654360 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #43 | fitting baseline...
+2021-04-15 09:42:09.655606 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #43 | fitted
+2021-04-15 09:42:09.659028 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #43 | saving snapshot...
+2021-04-15 09:42:09.662433 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #43 | saved
+2021-04-15 09:42:09.663221 CEST | -----------------------  ----------
+2021-04-15 09:42:09.663371 CEST | Iteration                 43
+2021-04-15 09:42:09.663502 CEST | AverageDiscountedReturn  115.082
+2021-04-15 09:42:09.663639 CEST | AverageReturn            123.911
+2021-04-15 09:42:09.663773 CEST | ExplainedVariance          0.422997
+2021-04-15 09:42:09.663901 CEST | NumTrajs                  30
+2021-04-15 09:42:09.664087 CEST | Entropy                    1.40437
+2021-04-15 09:42:09.664219 CEST | Perplexity                 4.07296
+2021-04-15 09:42:09.664347 CEST | StdReturn                 67.1451
+2021-04-15 09:42:09.664472 CEST | MaxReturn                269.875
+2021-04-15 09:42:09.664596 CEST | MinReturn                  0
+2021-04-15 09:42:09.664722 CEST | AveragePolicyStd           0.985536
+2021-04-15 09:42:09.664850 CEST | TransfBits                 0
+2021-04-15 09:42:09.664975 CEST | TotalAverageReturn       115.082
+2021-04-15 09:42:09.665098 CEST | -----------------------  ----------
+2021-04-15 09:42:09.835776 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #44 | fitting baseline...
+2021-04-15 09:42:09.837310 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #44 | fitted
+2021-04-15 09:42:09.841582 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #44 | saving snapshot...
+2021-04-15 09:42:09.846234 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #44 | saved
+2021-04-15 09:42:09.847140 CEST | -----------------------  ----------
+2021-04-15 09:42:09.847305 CEST | Iteration                 44
+2021-04-15 09:42:09.847455 CEST | AverageDiscountedReturn  112.241
+2021-04-15 09:42:09.847604 CEST | AverageReturn            121.538
+2021-04-15 09:42:09.847750 CEST | ExplainedVariance          0.279008
+2021-04-15 09:42:09.847895 CEST | NumTrajs                  31
+2021-04-15 09:42:09.848063 CEST | Entropy                    1.40365
+2021-04-15 09:42:09.848207 CEST | Perplexity                 4.07001
+2021-04-15 09:42:09.848350 CEST | StdReturn                 79.2914
+2021-04-15 09:42:09.848493 CEST | MaxReturn                369.875
+2021-04-15 09:42:09.848636 CEST | MinReturn                  0
+2021-04-15 09:42:09.848780 CEST | AveragePolicyStd           0.984824
+2021-04-15 09:42:09.848924 CEST | TransfBits                 0
+2021-04-15 09:42:09.849068 CEST | TotalAverageReturn       112.241
+2021-04-15 09:42:09.849212 CEST | -----------------------  ----------
+2021-04-15 09:42:10.027380 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #45 | fitting baseline...
+2021-04-15 09:42:10.028511 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #45 | fitted
+2021-04-15 09:42:10.031986 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #45 | saving snapshot...
+2021-04-15 09:42:10.035318 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #45 | saved
+2021-04-15 09:42:10.036173 CEST | -----------------------  ----------
+2021-04-15 09:42:10.036335 CEST | Iteration                 45
+2021-04-15 09:42:10.036481 CEST | AverageDiscountedReturn  128.205
+2021-04-15 09:42:10.036622 CEST | AverageReturn            140.663
+2021-04-15 09:42:10.036766 CEST | ExplainedVariance          0.248974
+2021-04-15 09:42:10.036905 CEST | NumTrajs                  27
+2021-04-15 09:42:10.037044 CEST | Entropy                    1.40284
+2021-04-15 09:42:10.037183 CEST | Perplexity                 4.06675
+2021-04-15 09:42:10.037320 CEST | StdReturn                 91.8697
+2021-04-15 09:42:10.037457 CEST | MaxReturn                359.894
+2021-04-15 09:42:10.037593 CEST | MinReturn                  0
+2021-04-15 09:42:10.037729 CEST | AveragePolicyStd           0.984034
+2021-04-15 09:42:10.037867 CEST | TransfBits                 0
+2021-04-15 09:42:10.038005 CEST | TotalAverageReturn       128.205
+2021-04-15 09:42:10.038142 CEST | -----------------------  ----------
+2021-04-15 09:42:10.215887 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #46 | fitting baseline...
+2021-04-15 09:42:10.217651 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #46 | fitted
+2021-04-15 09:42:10.221084 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #46 | saving snapshot...
+2021-04-15 09:42:10.224581 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #46 | saved
+2021-04-15 09:42:10.225446 CEST | -----------------------  ----------
+2021-04-15 09:42:10.225612 CEST | Iteration                 46
+2021-04-15 09:42:10.225762 CEST | AverageDiscountedReturn  108.288
+2021-04-15 09:42:10.225908 CEST | AverageReturn            117.103
+2021-04-15 09:42:10.226054 CEST | ExplainedVariance          0.50053
+2021-04-15 09:42:10.226198 CEST | NumTrajs                  32
+2021-04-15 09:42:10.226342 CEST | Entropy                    1.40196
+2021-04-15 09:42:10.226485 CEST | Perplexity                 4.06316
+2021-04-15 09:42:10.226627 CEST | StdReturn                 78.6029
+2021-04-15 09:42:10.226768 CEST | MaxReturn                309.902
+2021-04-15 09:42:10.226910 CEST | MinReturn                  9.98041
+2021-04-15 09:42:10.227051 CEST | AveragePolicyStd           0.983165
+2021-04-15 09:42:10.227194 CEST | TransfBits                 0
+2021-04-15 09:42:10.227335 CEST | TotalAverageReturn       108.288
+2021-04-15 09:42:10.227475 CEST | -----------------------  ----------
+2021-04-15 09:42:10.429617 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #47 | fitting baseline...
+2021-04-15 09:42:10.430731 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #47 | fitted
+2021-04-15 09:42:10.433833 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #47 | saving snapshot...
+2021-04-15 09:42:10.436592 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #47 | saved
+2021-04-15 09:42:10.437279 CEST | -----------------------  ----------
+2021-04-15 09:42:10.437409 CEST | Iteration                 47
+2021-04-15 09:42:10.437527 CEST | AverageDiscountedReturn  124.805
+2021-04-15 09:42:10.437641 CEST | AverageReturn            137.775
+2021-04-15 09:42:10.437754 CEST | ExplainedVariance          0.220774
+2021-04-15 09:42:10.437867 CEST | NumTrajs                  28
+2021-04-15 09:42:10.437979 CEST | Entropy                    1.40105
+2021-04-15 09:42:10.438092 CEST | Perplexity                 4.05946
+2021-04-15 09:42:10.438205 CEST | StdReturn                103.537
+2021-04-15 09:42:10.438317 CEST | MaxReturn                489.895
+2021-04-15 09:42:10.438428 CEST | MinReturn                  9.9812
+2021-04-15 09:42:10.438538 CEST | AveragePolicyStd           0.982271
+2021-04-15 09:42:10.438649 CEST | TransfBits                 0
+2021-04-15 09:42:10.438762 CEST | TotalAverageReturn       124.805
+2021-04-15 09:42:10.438873 CEST | -----------------------  ----------
+2021-04-15 09:42:10.603505 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #48 | fitting baseline...
+2021-04-15 09:42:10.604614 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #48 | fitted
+2021-04-15 09:42:10.607591 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #48 | saving snapshot...
+2021-04-15 09:42:10.610471 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #48 | saved
+2021-04-15 09:42:10.611189 CEST | -----------------------  ----------
+2021-04-15 09:42:10.611326 CEST | Iteration                 48
+2021-04-15 09:42:10.611451 CEST | AverageDiscountedReturn  122.247
+2021-04-15 09:42:10.611573 CEST | AverageReturn            134.201
+2021-04-15 09:42:10.611692 CEST | ExplainedVariance          0.366803
+2021-04-15 09:42:10.611811 CEST | NumTrajs                  28
+2021-04-15 09:42:10.611957 CEST | Entropy                    1.40016
+2021-04-15 09:42:10.612078 CEST | Perplexity                 4.05585
+2021-04-15 09:42:10.612198 CEST | StdReturn                 95.715
+2021-04-15 09:42:10.612317 CEST | MaxReturn                399.841
+2021-04-15 09:42:10.612437 CEST | MinReturn                  0
+2021-04-15 09:42:10.612554 CEST | AveragePolicyStd           0.981398
+2021-04-15 09:42:10.612671 CEST | TransfBits                 0
+2021-04-15 09:42:10.612788 CEST | TotalAverageReturn       122.247
+2021-04-15 09:42:10.612906 CEST | -----------------------  ----------
+2021-04-15 09:42:10.777643 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #49 | fitting baseline...
+2021-04-15 09:42:10.778682 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #49 | fitted
+2021-04-15 09:42:10.781841 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #49 | saving snapshot...
+2021-04-15 09:42:10.784648 CEST | [test_partrates_diffparams_notquant_2021_04_15_09_33_36_0010] itr #49 | saved
+2021-04-15 09:42:10.785358 CEST | -----------------------  ---------
+2021-04-15 09:42:10.785490 CEST | Iteration                 49
+2021-04-15 09:42:10.785613 CEST | AverageDiscountedReturn  145.424
+2021-04-15 09:42:10.785730 CEST | AverageReturn            159.494
+2021-04-15 09:42:10.785845 CEST | ExplainedVariance          0.15903
+2021-04-15 09:42:10.785958 CEST | NumTrajs                  25
+2021-04-15 09:42:10.786072 CEST | Entropy                    1.39941
+2021-04-15 09:42:10.786184 CEST | Perplexity                 4.0528
+2021-04-15 09:42:10.786298 CEST | StdReturn                 78.9446
+2021-04-15 09:42:10.786410 CEST | MaxReturn                339.884
+2021-04-15 09:42:10.786523 CEST | MinReturn                  9.97964
+2021-04-15 09:42:10.786636 CEST | AveragePolicyStd           0.98066
+2021-04-15 09:42:10.786754 CEST | TransfBits                 0
+2021-04-15 09:42:10.786868 CEST | TotalAverageReturn       145.424
+2021-04-15 09:42:10.786979 CEST | -----------------------  ---------
