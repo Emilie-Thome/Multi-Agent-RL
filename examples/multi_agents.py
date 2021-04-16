@@ -19,7 +19,7 @@ def run_task(v):
     print("###                          ####")
     print("###    average_period : " + str(average_period) +"   ####")
     print("###                          ####")
-    print("### quantization_tuning : " + str(quantization_tuning) +" ####")
+    print("######## discount : " + str(discount) +" ########")
     print("#################################")
     print("_________________________________")
     print("_________________________________")
@@ -43,11 +43,11 @@ def run_task(v):
         baseline=baseline,
         difference_params=True,
         quantize=False,
-        quantization_tuning=quantization_tuning,
+        quantization_tuning=0,
         batch_size=400,
         max_path_length=100,
         n_itr=50,
-        discount=0.99,
+        discount=discount,
         step_size=0.01,
         # Uncomment both lines (this and the plot parameter below) to enable plotting
         # plot=True,
@@ -56,17 +56,18 @@ def run_task(v):
     algo.train()
 
 quantization_tunings = [0]
-participation_rates = [0.5, 0.6, 0.7, 0.8, 0.9, 1]
-agents_numbers = [1, 5, 10]
-average_periods = [1]
+discounts = [0.5, 0.75, 0.99]
+participation_rates = [0.5, 1]
+agents_numbers = [5, 10]
+average_periods = [1, 5, 10]
 
-for quantization_tuning in quantization_tunings:
+for discount in discounts:
     for participation_rate in participation_rates:
         for agents_number in agents_numbers:
             for average_period in average_periods:
                 run_experiment_lite(
                     run_task,
-                    exp_prefix="test_partrates_diffparams_notquant",
+                    exp_prefix="test_discounts",
                     # Number of parallel workers for sampling
                     n_parallel=1,
                     # Only keep the snapshot parameters for the last iteration
@@ -74,7 +75,7 @@ for quantization_tuning in quantization_tunings:
                     # Specifies the seed for the experiment. If this is not provided, a random seed
                     # will be used
                     mode="local",
-                    variant=dict(quantization_tuning=quantization_tuning, participation_rate=participation_rate, agents_number=agents_number, average_period=average_period)
+                    variant=dict(discount=discount, participation_rate=participation_rate, agents_number=agents_number, average_period=average_period)
                     # plot=True,
                     # terminate_machine=False,
                 )

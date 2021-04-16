@@ -1,0 +1,7 @@
+{
+  "agents_number": 10, 
+  "average_period": 1, 
+  "exp_name": "test_diffparams_quant_2021_04_16_09_15_46_0003", 
+  "participation_rate": 0.5, 
+  "quantization_tuning": 1
+}
