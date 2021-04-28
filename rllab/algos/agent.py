@@ -25,6 +25,7 @@ class Agent(BatchPolopt, Serializable):
             quantization_tuning=4,
             optimizer=None,
             optimizer_args=None,
+            whole_paths=False,
             **kwargs):
         Serializable.quick_init(self, locals())
         if optimizer is None:
@@ -43,11 +44,13 @@ class Agent(BatchPolopt, Serializable):
         self.opt_info = None
         self.policy_params_last_update = 0
         self.difference_params = difference_params
+        self.whole_paths = whole_paths
         super(Agent, self).__init__(env=env,
                                     policy=policy,
                                     baseline=baseline,
                                     quantize=quantize,
-                                    quantization_tuning=quantization_tuning, **kwargs)
+                                    quantization_tuning=quantization_tuning,
+                                    whole_paths=whole_paths, **kwargs)
 
     def server_update_mean_policy(self, delta_policy_params):
         policy_params = self.policy_params_last_update - delta_policy_params if self.difference_params else delta_policy_params

@@ -1,6 +1,8 @@
 import numpy as np
 import random
 import sys
+import theano
+import theano.tensor as TT
 from rllab.misc import logger
 from rllab.misc.overrides import overrides
 from rllab.algos.batch_polopt import BatchPolopt
@@ -21,6 +23,7 @@ class Server(BatchPolopt, Serializable):
                  quantization_tuning=4,
                  optimizer=None,
                  optimizer_args=None,
+                 whole_paths=False,
                  **kwargs):
 
         Serializable.quick_init(self, locals())
@@ -40,12 +43,14 @@ class Server(BatchPolopt, Serializable):
                            baseline=baseline,
                            difference_params=difference_params,
                            quantize=quantize,
-                           quantization_tuning=quantization_tuning, **kwargs)
+                           quantization_tuning=quantization_tuning,
+                           whole_paths=whole_paths, **kwargs)
                         for optimizer in optimizer]
         self.baseline = baseline
         self.average_period = average_period
         self.participation_rate = participation_rate
         self.transferred_bits = 0
+        self.whole_paths = whole_paths
         super(Server, self).__init__(agents_number=agents_number,
                                     average_period=average_period,
                                     participation_rate=participation_rate,
@@ -56,7 +61,8 @@ class Server(BatchPolopt, Serializable):
                                     quantize=quantize,
                                     quantization_tuning=quantization_tuning,
                                     optimizer=optimizer,
-                                    optimizer_args=optimizer_args, **kwargs)
+                                    optimizer_args=optimizer_args,
+                                    whole_paths=whole_paths, **kwargs)
 
 
     @overrides
@@ -135,13 +141,93 @@ class Server(BatchPolopt, Serializable):
         self.init_opt()
         for itr in range(self.current_itr, self.n_itr):
             with logger.prefix('itr #%d | ' % itr):
-                paths_n = self.obtain_samples(itr)
-                samples_data_n = self.process_samples(itr, paths_n)
-                self.log_diagnostics(paths_n)
-                # print('Average Return:', np.mean([sum(path["rewards"])for paths in paths_n for path in paths]))
-                self.optimize_agents_policies(itr, samples_data_n)
-                if itr and (itr % self.average_period == 0):
-                    self.optimize_policy()
+                for agent in self.agents:
+                    if not itr % self.average_period: #TODO : if available for communications
+                        agent.policy.set_param_values(server_params) #TODO: init server params
+
+                    paths = agent.sampler.obtain_samples(itr)
+                    print("###################")
+                    print("###### paths ######")
+                    print(paths)
+                    print("###################")
+                    print("###################")
+                    is_recurrent = int(agent.policy.recurrent)
+
+                    obs_var = agent.env.observation_space.new_tensor_variable(
+                        'obs',
+                        extra_dims=1 + is_recurrent,
+                    )
+                    action_var = agent.env.action_space.new_tensor_variable(
+                        'action',
+                        extra_dims=1 + is_recurrent,
+                    )
+                    advantage_var = ext.new_tensor(
+                        'advantage',
+                        ndim=1 + is_recurrent,
+                        dtype=theano.config.floatX
+                    )
+
+                    state_info_vars = {
+                        k: ext.new_tensor(
+                            k,
+                            ndim=2 + is_recurrent,
+                            dtype=theano.config.floatX
+                        ) for k in agent.policy.state_info_keys
+                    }
+
+                    state_info_vars_list = [state_info_vars[k] for k in agent.policy.state_info_keys]
+                    
+                    if is_recurrent:
+                        valid_var = TT.matrix('valid')
+                    else:
+                        valid_var = None
+
+                    dist_info_vars = agent.policy.dist_info_sym(obs_var, state_info_vars)
+                    logli = dist.log_likelihood_sym(action_var, dist_info_vars)
+                    # formulate as a minimization problem
+                    # The gradient of the surrogate objective is the policy gradient
+                    if is_recurrent:
+                        surr_obj = - TT.sum(logli * advantage_var * valid_var) / TT.sum(valid_var)
+                    else:
+                        surr_obj = - TT.mean(logli * advantage_var)
+                    input_list = [obs_var, action_var, advantage_var] + state_info_vars_list
+                    grad = theano.grad(surr_obj, agent.policy.get_params(trainable=True), disconnected_inputs='ignore')
+                    f_grad = theano.function(inputs=input_list,
+                                        outputs=grad,
+                                        on_unused_input='ignore')
+
+
+                    samples_data = agent.sampler.process_samples(itr, paths)
+                    inputs = ext.extract(
+                        samples_data,
+                        "observations", "actions", "advantages"
+                    )
+                    agent_infos = samples_data["agent_infos"]
+                    state_info_list = [agent_infos[k] for k in agent.policy.state_info_keys]
+                    inputs += tuple(state_info_list)
+                    if agent.policy.recurrent:
+                        inputs += (samples_data["valids"],)
+
+                    dataset = BatchDataset(inputs, batch_size=32)
+                    gradients = []
+                    for batch in dataset.iterate(update=True):
+                        gradients.append(f_grad(*batch))
+
+                    gradient_estimator = np.average(gradients, axis=0)
+
+                    GT_based_estimator = gradient_estimator - gradient_tracking # TODO : init gradient tracking
+
+                    agent_new_params = agent.policy.get_params() + learning_rate * GT_based_estimator # TODO : instore learning rate
+                    agent.policy.set_param_values(agent_new_params)
+
+                    if itr and (not itr % self.average_period):
+                        # TODO: agent sends to server the quantization
+                        # TODO: agent updates 
+
+                if itr and (not itr % self.average_period):
+                    # TODO: server computes average agents quantizations and broadcast
+                    # TODO: server updates its policy and broadcast
+
                     logger.log("saving snapshot...")
                     params = self.get_itr_snapshot(itr)
                     self.current_itr = itr + 1
