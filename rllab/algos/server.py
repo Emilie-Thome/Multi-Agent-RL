@@ -56,7 +56,7 @@ class Server(BatchPolopt, Serializable):
         self.whole_paths = whole_paths
         self.learning_rate = learning_rate
         self.gamma = gamma
-        self.server_params = None #TODO: init server params
+        self.theta_server = policy.get_param_values() #TODO: init server params
         super(Server, self).__init__(agents_number=agents_number,
                                     average_period=average_period,
                                     participation_rate=participation_rate,
@@ -86,19 +86,19 @@ class Server(BatchPolopt, Serializable):
     @overrides
     def init_opt(self):
         for agent in self.agents:
-            agent.init_opt()
+            agent.GT_init(self.theta_server)
 
-    def obtain_samples(self, itr):
-        paths_n = []
-        for agent in self.agents:
-            paths_n.append(agent.sampler.obtain_samples(itr))
-        return paths_n
+    # def obtain_samples(self, itr):
+    #     paths_n = []
+    #     for agent in self.agents:
+    #         paths_n.append(agent.sampler.obtain_samples(itr))
+    #     return paths_n
 
-    def process_samples(self, itr, paths_n):
-        samples_data_n = []
-        for paths, agent in zip(paths_n, self.agents):
-            samples_data_n.append(agent.sampler.process_samples(itr, paths))
-        return samples_data_n
+    # def process_samples(self, itr, paths_n):
+    #     samples_data_n = []
+    #     for paths, agent in zip(paths_n, self.agents):
+    #         samples_data_n.append(agent.sampler.process_samples(itr, paths))
+    #     return samples_data_n
 
     @overrides
     def log_diagnostics(self, paths_n):
@@ -149,28 +149,24 @@ class Server(BatchPolopt, Serializable):
         self.init_opt()
         for itr in range(self.current_itr, self.n_itr):
             with logger.prefix('itr #%d | ' % itr):
-                
+                participants = self.generate_participants()
                 for agent in self.agents:
                     if (not itr % self.average_period) and (agent in participants):
-                        agent.server_update_policy(self.server_params)
+                        agent.update_policy()
                     agent.GT_optimize(itr)
 
-                if itr and (not itr % self.average_period):
-                    participants = self.generate_participants()
-                    
+                if itr and (not itr % self.average_period):                   
                     delta_agents = self.collect_deltas(participants)
                     for k, agent in enumerate(participants):
                         self.transferred_bits += sys.getsizeof(delta_agents[k])
 
                     delta_server = np.average(delta_agents, axis=0)
-                    self.server_params = self.server_params + self.learning_rate*self.gamma*delta_server
+                    self.theta_server = self.theta_server + self.learning_rate*self.gamma*delta_server
                     for agent in self.agents:
-                        agent.transmit_to_agent(delta_server, self.server_params)
+                        agent.transmit_to_agent(delta_server, self.theta_server)
                     
                     for agent in self.agents:
                         agent.update_GT(self.average_period)
-
-
 
                     logger.log("saving snapshot...")
                     params = self.get_itr_snapshot(itr)

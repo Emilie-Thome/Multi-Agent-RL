@@ -6,7 +6,7 @@ from rllab.misc import logger
 from rllab.misc.overrides import overrides
 from rllab.misc import ext
 from rllab.algos.batch_polopt import BatchPolopt
-from rllab.optimizers.first_order_optimizer import FirstOrderOptimizer
+from rllab.optimizers.minibatch_dataset import BatchDataset
 from rllab.core.serializable import Serializable
 
 
@@ -64,7 +64,7 @@ class Agent(BatchPolopt, Serializable):
         policy_params = self.theta_server - delta_policy_params if self.difference_params else delta_policy_params
         self.theta_server = policy_params
 
-    def server_update_policy(self):
+    def update_policy(self):
         self.policy.set_param_values(self.theta_server)
 
     def quantize_component(self, v, v_i):
@@ -96,8 +96,8 @@ class Agent(BatchPolopt, Serializable):
     def update_GT(self, average_period):
         self.gradient_tracking = self.gradient_tracking + (self.delta_agent - self.delta_server)/average_period
 
-    def GT_init(self):
-        self.gradient_tracking = None # TODO : init gradient tracking
+    def GT_init(self, theta_server):
+        self.theta_server = theta_server
 
         is_recurrent = int(self.policy.recurrent)
 
@@ -131,7 +131,7 @@ class Agent(BatchPolopt, Serializable):
             valid_var = None
 
         dist_info_vars = self.policy.dist_info_sym(obs_var, state_info_vars)
-        logli = dist.log_likelihood_sym(action_var, dist_info_vars)
+        logli = self.policy.distribution.log_likelihood_sym(action_var, dist_info_vars)
         # formulate as a minimization problem
         # The gradient of the surrogate objective is the policy gradient
         if is_recurrent:
@@ -143,6 +143,26 @@ class Agent(BatchPolopt, Serializable):
         self.f_grad = theano.function(inputs=input_list,
                                     outputs=grad,
                                     on_unused_input='ignore')
+        
+        paths = self.sampler.obtain_samples(0)
+        samples_data = self.sampler.process_samples(0, paths)
+        inputs = ext.extract(
+            samples_data,
+            "observations", "actions", "advantages"
+        )
+        agent_infos = samples_data["agent_infos"]
+        state_info_list = [agent_infos[k] for k in self.policy.state_info_keys]
+        inputs += tuple(state_info_list)
+        if self.policy.recurrent:
+            inputs += (samples_data["valids"],)
+
+        dataset = BatchDataset(inputs, batch_size=32)
+        gradients = []
+        for batch in dataset.iterate(update=True):
+            gradients.append(self.f_grad(*batch))
+
+        self.gradient_tracking = np.average(gradients, axis=0)
+
 
     def GT_optimize(self, itr):
         paths = self.sampler.obtain_samples(itr)
@@ -166,7 +186,11 @@ class Agent(BatchPolopt, Serializable):
 
         GT_based_estimator = gradient_estimator - self.gradient_tracking
 
-        agent_new_params = self.policy.get_params() + self.learning_rate * GT_based_estimator
+        print("_____________________________")
+        print(self.policy.get_param_values())
+        print("_____________________________")
+        print(self.learning_rate * GT_based_estimator)
+        agent_new_params = self.policy.get_param_values() + self.learning_rate * GT_based_estimator
         self.policy.set_param_values(agent_new_params)
 
     # @overrides

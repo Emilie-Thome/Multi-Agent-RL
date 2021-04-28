@@ -57,7 +57,7 @@ def run_task(v):
 
     algo.train()
 
-quantization_tunings = [1, 5, 15, 20]
+quantization_tunings = [15]
 discounts = [0.99]
 participation_rates = [1]
 agents_numbers = [5]
@@ -70,7 +70,7 @@ for quantization_tuning in quantization_tunings:
                 for average_period in average_periods:
                     run_experiment_lite(
                         run_task,
-                        exp_prefix="test_quantized",
+                        exp_prefix="test_gradient_tracking",
                         # Number of parallel workers for sampling
                         n_parallel=1,
                         # Only keep the snapshot parameters for the last iteration
