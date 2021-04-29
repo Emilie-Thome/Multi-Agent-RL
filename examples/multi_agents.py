@@ -47,8 +47,8 @@ def run_task(v):
         quantize=True,
         quantization_tuning=quantization_tuning,
         batch_size=400,
-        max_path_length=100,
-        n_itr=50,
+        max_path_length=50,
+        n_itr=100,
         discount=discount,
         step_size=0.01,
         # Uncomment both lines (this and the plot parameter below) to enable plotting

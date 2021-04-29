@@ -48,7 +48,10 @@ class Agent(BatchPolopt, Serializable):
         self.whole_paths = whole_paths
         self.learning_rate = learning_rate
         self.gradient_tracking = None
-        self.f_grad = None
+        self.grads = None
+        self.observations_var = None
+        self.actions_var = None
+        self.returns_var = None
         self.delta_agent = None
         self.delta_server = None
 
@@ -71,7 +74,7 @@ class Agent(BatchPolopt, Serializable):
         s = self.quantization_tuning
         norm_v = np.linalg.norm(v)
         abs_v_i = abs(v_i)
-        a = abs_v_i/norm_v
+        a = abs_v_i/norm_v if norm_v else 0
         l = float(int(a*s))
         p = a*s - l
         rand = random.uniform(0,1)
@@ -86,6 +89,8 @@ class Agent(BatchPolopt, Serializable):
         self.delta_agent = (self.theta_server - self.policy.get_param_values())/self.learning_rate if self.difference_params else self.policy.get_param_values()
         if self.quantize:
             self.delta_agent = self.quantize_vector(self.delta_agent)
+        print("________________delta_agent________________")
+        print(self.delta_agent)
         return self.delta_agent
 
     def transmit_to_agent(self, delta_server, theta_server):
@@ -99,97 +104,66 @@ class Agent(BatchPolopt, Serializable):
     def GT_init(self, theta_server):
         self.theta_server = theta_server
 
-        is_recurrent = int(self.policy.recurrent)
-
-        obs_var = self.env.observation_space.new_tensor_variable(
-            'obs',
-            extra_dims=1 + is_recurrent,
+        # Create a Theano variable for storing the observations
+        # We could have simply written `observations_var = TT.matrix('observations')` instead for this example. However,
+        # doing it in a slightly more abstract way allows us to delegate to the environment for handling the correct data
+        # type for the variable. For instance, for an environment with discrete observations, we might want to use integer
+        # types if the observations are represented as one-hot vectors.
+        self.observations_var = self.env.observation_space.new_tensor_variable(
+            'observations',
+            # It should have 1 extra dimension since we want to represent a list of observations
+            extra_dims=1
         )
-        action_var = self.env.action_space.new_tensor_variable(
-            'action',
-            extra_dims=1 + is_recurrent,
+        self.actions_var = self.env.action_space.new_tensor_variable(
+            'actions',
+            extra_dims=1
         )
-        advantage_var = ext.new_tensor(
-            'advantage',
-            ndim=1 + is_recurrent,
-            dtype=theano.config.floatX
-        )
+        self.returns_var = TT.vector('returns')
 
-        state_info_vars = {
-            k: ext.new_tensor(
-                k,
-                ndim=2 + is_recurrent,
-                dtype=theano.config.floatX
-            ) for k in self.policy.state_info_keys
-        }
+        # policy.dist_info_sym returns a dictionary, whose values are symbolic expressions for quantities related to the
+        # distribution of the actions. For a Gaussian policy, it contains the mean and the logarithm of the standard deviation.
+        dist_info_vars = self.policy.dist_info_sym(self.observations_var)
 
-        state_info_vars_list = [state_info_vars[k] for k in self.policy.state_info_keys]
-        
-        if is_recurrent:
-            valid_var = TT.matrix('valid')
-        else:
-            valid_var = None
+        # policy.distribution returns a distribution object under rllab.distributions. It contains many utilities for computing
+        # distribution-related quantities, given the computed dist_info_vars. Below we use dist.log_likelihood_sym to compute
+        # the symbolic log-likelihood. For this example, the corresponding distribution is an instance of the class
+        # rllab.distributions.DiagonalGaussian
+        dist = self.policy.distribution
 
-        dist_info_vars = self.policy.dist_info_sym(obs_var, state_info_vars)
-        logli = self.policy.distribution.log_likelihood_sym(action_var, dist_info_vars)
-        # formulate as a minimization problem
-        # The gradient of the surrogate objective is the policy gradient
-        if is_recurrent:
-            surr_obj = - TT.sum(logli * advantage_var * valid_var) / TT.sum(valid_var)
-        else:
-            surr_obj = - TT.mean(logli * advantage_var)
-        input_list = [obs_var, action_var, advantage_var] + state_info_vars_list
-        grad = theano.grad(surr_obj, self.policy.get_params(trainable=True), disconnected_inputs='ignore')
-        self.f_grad = theano.function(inputs=input_list,
-                                    outputs=grad,
-                                    on_unused_input='ignore')
-        
+        # Note that we do not negate the objective, since most optimizers assume a maximization problem
+        surr = TT.mean(dist.log_likelihood_sym(self.actions_var, dist_info_vars) * self.returns_var)
+
         paths = self.sampler.obtain_samples(0)
         samples_data = self.sampler.process_samples(0, paths)
         inputs = ext.extract(
             samples_data,
-            "observations", "actions", "advantages"
+            "observations", "actions", "returns"
         )
-        agent_infos = samples_data["agent_infos"]
-        state_info_list = [agent_infos[k] for k in self.policy.state_info_keys]
-        inputs += tuple(state_info_list)
-        if self.policy.recurrent:
-            inputs += (samples_data["valids"],)
 
-        dataset = BatchDataset(inputs, batch_size=32)
+        # Get the list of trainable parameters.
+        params = self.policy.get_params(trainable=True)
+        self.grads = theano.grad(surr, params)
         gradients = []
-        for batch in dataset.iterate(update=True):
-            gradients.append(self.f_grad(*batch))
+        for g_t in self.grads:
+            gradients = gradients + list(np.array(g_t.eval({self.observations_var: inputs[0],
+                                                            self.actions_var: inputs[1],
+                                                            self.returns_var: inputs[2]})).flat)
+        self.gradient_tracking = np.array(gradients)
 
-        self.gradient_tracking = np.average(gradients, axis=0)
 
-
-    def GT_optimize(self, itr):
-        paths = self.sampler.obtain_samples(itr)
-        samples_data = self.sampler.process_samples(itr, paths)
+    def GT_optimize(self, itr, samples_data):
         inputs = ext.extract(
             samples_data,
-            "observations", "actions", "advantages"
+            "observations", "actions", "returns"
         )
-        agent_infos = samples_data["agent_infos"]
-        state_info_list = [agent_infos[k] for k in self.policy.state_info_keys]
-        inputs += tuple(state_info_list)
-        if self.policy.recurrent:
-            inputs += (samples_data["valids"],)
-
-        dataset = BatchDataset(inputs, batch_size=32)
+        # Get the list of trainable parameters.
         gradients = []
-        for batch in dataset.iterate(update=True):
-            gradients.append(self.f_grad(*batch))
-
-        gradient_estimator = np.average(gradients, axis=0)
-
+        for g_t in self.grads:
+            gradients = gradients + list(np.array(g_t.eval({self.observations_var: inputs[0],
+                                                            self.actions_var: inputs[1],
+                                                            self.returns_var: inputs[2]})).flat)
+        gradient_estimator = np.array(gradients)
         GT_based_estimator = gradient_estimator - self.gradient_tracking
-
-        print("_____________________________")
-        print(self.policy.get_param_values())
-        print("_____________________________")
-        print(self.learning_rate * GT_based_estimator)
         agent_new_params = self.policy.get_param_values() + self.learning_rate * GT_based_estimator
         self.policy.set_param_values(agent_new_params)
 
