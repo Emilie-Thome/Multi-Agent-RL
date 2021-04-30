@@ -89,8 +89,6 @@ class Agent(BatchPolopt, Serializable):
         self.delta_agent = (self.theta_server - self.policy.get_param_values())/self.learning_rate if self.difference_params else self.policy.get_param_values()
         if self.quantize:
             self.delta_agent = self.quantize_vector(self.delta_agent)
-        print("________________delta_agent________________")
-        print(self.delta_agent)
         return self.delta_agent
 
     def transmit_to_agent(self, delta_server, theta_server):
@@ -99,7 +97,8 @@ class Agent(BatchPolopt, Serializable):
 
 
     def update_GT(self, average_period):
-        self.gradient_tracking = self.gradient_tracking + (self.delta_agent - self.delta_server)/average_period
+        self.gradient_tracking = self.gradient_tracking # + (self.delta_agent - self.delta_server)/average_period TODO : this cause problem
+
 
     def GT_init(self, theta_server):
         self.theta_server = theta_server
@@ -130,7 +129,7 @@ class Agent(BatchPolopt, Serializable):
         # rllab.distributions.DiagonalGaussian
         dist = self.policy.distribution
 
-        # Note that we do not negate the objective, since most optimizers assume a maximization problem
+        # Note that we do not negate the objective, since we want to maximize the returns
         surr = TT.mean(dist.log_likelihood_sym(self.actions_var, dist_info_vars) * self.returns_var)
 
         paths = self.sampler.obtain_samples(0)
@@ -148,7 +147,8 @@ class Agent(BatchPolopt, Serializable):
             gradients = gradients + list(np.array(g_t.eval({self.observations_var: inputs[0],
                                                             self.actions_var: inputs[1],
                                                             self.returns_var: inputs[2]})).flat)
-        self.gradient_tracking = np.array(gradients)
+        # self.gradient_tracking = np.array(gradients) TODO : this cause problem
+        self.gradient_tracking = np.array([0]*len(gradients))
 
 
     def GT_optimize(self, itr, samples_data):
@@ -164,8 +164,12 @@ class Agent(BatchPolopt, Serializable):
                                                             self.returns_var: inputs[2]})).flat)
         gradient_estimator = np.array(gradients)
         GT_based_estimator = gradient_estimator - self.gradient_tracking
+        print("_____________GT_based_estimator_____________")
+        print(GT_based_estimator)
         agent_new_params = self.policy.get_param_values() + self.learning_rate * GT_based_estimator
         self.policy.set_param_values(agent_new_params)
+        print("_____self.policy.get_param_values()_____")
+        print(self.policy.get_param_values())
 
     # @overrides
     # def init_opt(self):

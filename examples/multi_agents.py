@@ -43,6 +43,7 @@ def run_task(v):
         env=env,
         policy=policy,
         baseline=baseline,
+        learning_rate=1e-3,
         difference_params=True,
         quantize=True,
         quantization_tuning=quantization_tuning,
@@ -61,7 +62,7 @@ quantization_tunings = [15]
 discounts = [0.99]
 participation_rates = [1]
 agents_numbers = [5]
-average_periods = [10]
+average_periods = [1]
 
 for quantization_tuning in quantization_tunings:
     for discount in discounts:

@@ -167,11 +167,13 @@ class Server(BatchPolopt, Serializable):
                     samples_data = agent.sampler.process_samples(itr, paths)
                     agent.GT_optimize(itr, samples_data)
 
-                if itr and (not itr % self.average_period):                   
+                if itr and (not itr % self.average_period):                  
                     delta_agents = self.collect_deltas(participants)
                     self.transferred_bits += sum([sys.getsizeof(delta_agent) for delta_agent in delta_agents])
                     delta_server = np.average(delta_agents, axis=0)
-                    self.theta_server = self.theta_server + self.learning_rate*self.gamma*delta_server
+                    print("___________delta_server___________")
+                    print(delta_server)
+                    self.theta_server = self.theta_server - self.learning_rate*self.gamma*delta_server
                     for agent in self.agents:
                         agent.transmit_to_agent(delta_server, self.theta_server)
                         agent.update_GT(self.average_period)
