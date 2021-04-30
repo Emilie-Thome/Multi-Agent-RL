@@ -163,6 +163,8 @@ class Server(BatchPolopt, Serializable):
                     if (not itr % self.average_period) and (agent in participants):
                         agent.update_policy()
                     paths = agent.sampler.obtain_samples(itr)
+                    print("###########len(paths)")
+                    print(len(paths))
                     paths_n.append(paths)
                     samples_data = agent.sampler.process_samples(itr, paths)
                     agent.GT_optimize(itr, samples_data)
