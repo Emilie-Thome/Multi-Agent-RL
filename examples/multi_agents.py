@@ -48,17 +48,15 @@ def run_task(v):
         quantize=True,
         quantization_tuning=quantization_tuning,
         batch_size=400,
-        max_path_length=50,
+        max_path_length=100,
         n_itr=100,
         discount=discount,
-        step_size=0.01,
-        # Uncomment both lines (this and the plot parameter below) to enable plotting
-        # plot=True,
+        step_size=0.0001,
     )
 
     algo.train()
 
-quantization_tunings = [15]
+quantization_tunings = [20]
 discounts = [0.99]
 participation_rates = [1]
 agents_numbers = [5]

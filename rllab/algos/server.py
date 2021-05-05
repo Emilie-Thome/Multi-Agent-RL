@@ -44,6 +44,7 @@ class Server(BatchPolopt, Serializable):
                            optimizer=optimizer,
                            baseline=baseline,
                            learning_rate=learning_rate,
+                           average_period=average_period,
                            difference_params=difference_params,
                            quantize=quantize,
                            quantization_tuning=quantization_tuning,
@@ -56,7 +57,6 @@ class Server(BatchPolopt, Serializable):
         self.whole_paths = whole_paths
         self.learning_rate = learning_rate
         self.gamma = gamma
-        self.theta_server = policy.get_param_values()
         super(Server, self).__init__(agents_number=agents_number,
                                     average_period=average_period,
                                     participation_rate=participation_rate,
@@ -72,37 +72,6 @@ class Server(BatchPolopt, Serializable):
                                     optimizer_args=optimizer_args,
                                     whole_paths=whole_paths, **kwargs)
 
-
-    # def obtain_samples(self, itr):
-    #     paths_n = []
-    #     for agent in self.agents:
-    #         paths_n.append(agent.sampler.obtain_samples(itr))
-    #     return paths_n
-
-    # def process_samples(self, itr, paths_n):
-    #     samples_data_n = []
-    #     for paths, agent in zip(paths_n, self.agents):
-    #         samples_data_n.append(agent.sampler.process_samples(itr, paths))
-    #     return samples_data_n
-
-    # def optimize_agents_policies(self, itr, samples_data_n):
-    #     for samples_data, agent in zip(samples_data_n, self.agents):
-    #         agent.optimize_policy(itr, samples_data)
-
-    # @overrides
-    # def optimize_policy(self):
-    #     participants = self.generate_participants()
-
-    #     delta_agents = self.collect_deltas(participants)
-    #     for k, agent in enumerate(participants):
-    #         self.transferred_bits += sys.getsizeof(delta_agents[k])
-
-    #     delta_server = np.average(delta_agents, axis=0)
-    #     for agent in self.agents:
-    #         agent.server_update_mean_policy(delta_server)
-    #         if agent in participants:
-    #             agent.server_update_policy()
-
     @overrides
     def start_worker(self):
         for agent in self.agents:
@@ -115,28 +84,20 @@ class Server(BatchPolopt, Serializable):
 
     @overrides
     def init_opt(self):
+        default = self.policy.get_param_values()
         for agent in self.agents:
-            agent.GT_init(self.theta_server)
+            agent.transmit_to_agent(default, default)
+            agent.GT_init()
 
     @overrides
-    def get_itr_snapshot(self, itr):
-        return dict(
-            itr=itr,
-            policy=self.policy, #TODO : not necessary
-            baseline=self.baseline,
-            env=self.env,
-        )
-
-    @overrides
-    def log_diagnostics(self, itr, paths_n):
+    def log_diagnostics(self, itr, paths_n, gradient_n):
         logger.log("saving snapshot...")
-        params = self.get_itr_snapshot(itr)
-        params["algo"] = self
         logger.record_tabular('TransfBits',self.transferred_bits)
         returns = [sum([rew*(self.discount**k) for k, rew in enumerate(path['rewards'])]) for paths in paths_n for path in paths]
         average_returns = np.mean(returns)
         logger.record_tabular('TotalAverageReturn', average_returns)
-        logger.save_itr_params(itr, params)
+        average_gradient = np.mean(gradient_n)
+        logger.record_tabular('AverageGradient', average_gradient)
         logger.log("saved")
         logger.dump_tabular(with_prefix=False)
 
@@ -148,42 +109,58 @@ class Server(BatchPolopt, Serializable):
             participants.update({agents[random.randrange(len(agents))]})
         return participants
 
-    def collect_deltas(self, participants):
-        return [agent.transmit_to_server() for agent in participants]
+    def compute_delta_server(self, participants):
+        delta_agents = [agent.transmit_to_server() for agent in participants]
+        self.transferred_bits += sum([sys.getsizeof(delta_agent) for delta_agent in delta_agents])
+        return np.average(delta_agents, axis=0)
+    
+    def compute_theta_server(self, delta_server):
+        return self.policy.get_param_values() - self.learning_rate*self.gamma*delta_server
 
     @overrides
     def train(self):
         self.start_worker()
         self.init_opt()
-        for itr in range(self.current_itr, self.n_itr):
-            with logger.prefix('itr #%d | ' % itr):
+        for r in range(self.n_itr//self.average_period):
                 participants = self.generate_participants()
                 paths_n = []
+                gradient_n = []
                 for agent in self.agents:
-                    if (not itr % self.average_period) and (agent in participants):
-                        agent.update_policy()
-                    paths = agent.sampler.obtain_samples(itr)
-                    print("###########len(paths)")
-                    print(len(paths))
-                    paths_n.append(paths)
-                    samples_data = agent.sampler.process_samples(itr, paths)
-                    agent.GT_optimize(itr, samples_data)
+                    if (agent in participants):
+                        agent.update_policy_to_server()
+                    for c in range(self.average_period):
+                        with logger.prefix('r = '+str(r)+' | ' + 'c = '+str(c)+' | '):
+                            self.current_itr = r*self.average_period + c
+                            paths = agent.sampler.obtain_samples(self.current_itr)
+                            samples_data = agent.sampler.process_samples(self.current_itr, paths)
+                            gradient_estimator = agent.estimate_gradient(samples_data)
+                            GT_based_estimator = agent.GT_based_estimator(gradient_estimator)
+                            agent.GT_policy_update(GT_based_estimator)
+                            if c == self.average_period-1 :
+                                paths_n.append(paths)
+                                gradient_n.append(np.average(gradient_estimator))
+                            # if (c == 0) and (agent in participants):
+                            #     returns = [sum([rew*(self.discount**k) for k, rew in enumerate(path['rewards'])]) for path in paths]
+                            #     average_returns = np.mean(returns)
+                            #     print('Agent updated Returns : ' + str(average_returns))
+                            # if (c == 0) and (not agent in participants):
+                            #     returns = [sum([rew*(self.discount**k) for k, rew in enumerate(path['rewards'])]) for path in paths]
+                            #     average_returns = np.mean(returns)
+                            #     print('Agent not updated Returns : ' + str(average_returns))
+                            # if c == self.average_period - 1:
+                            #     returns = [sum([rew*(self.discount**k) for k, rew in enumerate(path['rewards'])]) for path in paths]
+                            #     average_returns = np.mean(returns)
+                            #     print('Agent before potential update Returns : ' + str(average_returns))
+                    agent.compute_delta_agent()
 
-                if itr and (not itr % self.average_period):                  
-                    delta_agents = self.collect_deltas(participants)
-                    self.transferred_bits += sum([sys.getsizeof(delta_agent) for delta_agent in delta_agents])
-                    delta_server = np.average(delta_agents, axis=0)
-                    print("___________delta_server___________")
-                    print(delta_server)
-                    self.theta_server = self.theta_server - self.learning_rate*self.gamma*delta_server
-                    for agent in self.agents:
-                        agent.transmit_to_agent(delta_server, self.theta_server)
-                        agent.update_GT(self.average_period)
+                delta_server = self.compute_delta_server(participants)
+                theta_server = self.compute_theta_server(delta_server)
+                self.policy.set_param_values(theta_server)
 
-                self.log_diagnostics(itr, paths_n)
-                self.current_itr = itr + 1
+                for agent in self.agents:
+                    agent.transmit_to_agent(delta_server, theta_server)
+                    agent.GT_update()
 
-        if (self.n_itr - 1) % self.average_period != 0 :
-            self.log_diagnostics(self.n_itr - 1, paths_n)
+                self.log_diagnostics(self.current_itr, paths_n, gradient_n)
 
         self.shutdown_worker()
