@@ -130,8 +130,8 @@ class GaussianMLPPolicy(StochasticPolicy, LasagnePowered):
         return action, dict(mean=mean, log_std=log_std)
 
     def get_actions(self, observations):
-        flat_obs = self.observation_space.flatten_n(observations)
-        means, log_stds = self._f_dist(flat_obs)
+        flat_obs_n = self.observation_space.flatten_n(observations)
+        means, log_stds = self._f_dist(flat_obs_n)
         rnd = np.random.normal(size=means.shape)
         actions = rnd * np.exp(log_stds) + means
         return actions, dict(mean=means, log_std=log_stds)

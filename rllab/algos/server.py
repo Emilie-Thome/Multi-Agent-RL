@@ -89,15 +89,43 @@ class Server(BatchPolopt, Serializable):
             agent.transmit_to_agent(default, default)
             agent.GT_init()
 
-    @overrides
-    def log_diagnostics(self, itr, paths_n, gradient_n):
+    # @overrides
+    # def log_diagnostics(self, itr, delta_server, Em1_paths_n, Em1_gradient_n, Em1_GT_gradient_n, zero_paths_n, zero_gradient_n, zero_GT_gradient_n):
+    #     logger.log("saving snapshot...")
+    #     logger.record_tabular('TransfBits',self.transferred_bits)
+    #     logger.record_tabular('DeltaServer', np.mean(self.learning_rate*self.gamma*delta_server))
+        
+    #     returns = [sum([rew*(self.discount**k) for k, rew in enumerate(path['rewards'])]) for paths in zero_paths_n for path in paths]
+    #     average_returns = np.mean(returns)
+    #     logger.record_tabular('0TotalAverageReturn', average_returns)
+    #     average_gradient = np.mean(zero_gradient_n)
+    #     logger.record_tabular('0AverageGradient', average_gradient)
+    #     average_GT_gradient = np.mean(zero_GT_gradient_n)
+    #     logger.record_tabular('0AverageGTBasedGradient', average_GT_gradient)
+
+    #     returns = [sum([rew*(self.discount**k) for k, rew in enumerate(path['rewards'])]) for paths in Em1_paths_n for path in paths]
+    #     average_returns = np.mean(returns)
+    #     logger.record_tabular('Em1TotalAverageReturn', average_returns)
+    #     average_gradient = np.mean(Em1_gradient_n)
+    #     logger.record_tabular('Em1AverageGradient', average_gradient)
+    #     average_GT_gradient = np.mean(Em1_GT_gradient_n)
+    #     logger.record_tabular('Em1AverageGTBasedGradient', average_GT_gradient)
+
+    #     logger.log("saved")
+    #     logger.dump_tabular(with_prefix=False)
+    # @overrides
+    def log_diagnostics(self, itr, delta_server, paths_n, gradient_n, GT_gradient_n):
         logger.log("saving snapshot...")
         logger.record_tabular('TransfBits',self.transferred_bits)
-        returns = [sum([rew*(self.discount**k) for k, rew in enumerate(path['rewards'])]) for paths in paths_n for path in paths]
-        average_returns = np.mean(returns)
+        logger.record_tabular('DeltaServer', np.mean(self.learning_rate*self.gamma*delta_server))
+        
+        average_returns = np.mean([path['returns'][0] for paths in paths_n for path in paths])
         logger.record_tabular('TotalAverageReturn', average_returns)
         average_gradient = np.mean(gradient_n)
         logger.record_tabular('AverageGradient', average_gradient)
+        average_GT_gradient = np.mean(GT_gradient_n)
+        logger.record_tabular('AverageGTBasedGradient', average_GT_gradient)
+
         logger.log("saved")
         logger.dump_tabular(with_prefix=False)
 
@@ -123,8 +151,12 @@ class Server(BatchPolopt, Serializable):
         self.init_opt()
         for r in range(self.n_itr//self.average_period):
                 participants = self.generate_participants()
-                paths_n = []
-                gradient_n = []
+                zero_paths_n = []
+                zero_gradient_n = []
+                zero_GT_gradient_n = []
+                Em1_paths_n = []
+                Em1_gradient_n = []
+                Em1_GT_gradient_n = []
                 for agent in self.agents:
                     if (agent in participants):
                         agent.update_policy_to_server()
@@ -136,9 +168,14 @@ class Server(BatchPolopt, Serializable):
                             gradient_estimator = agent.estimate_gradient(samples_data)
                             GT_based_estimator = agent.GT_based_estimator(gradient_estimator)
                             agent.GT_policy_update(GT_based_estimator)
+                            if c == 0 :
+                                zero_paths_n.append(paths)
+                                zero_gradient_n.append(np.average(gradient_estimator))
+                                zero_GT_gradient_n.append(np.average(GT_based_estimator))
                             if c == self.average_period-1 :
-                                paths_n.append(paths)
-                                gradient_n.append(np.average(gradient_estimator))
+                                Em1_paths_n.append(paths)
+                                Em1_gradient_n.append(np.average(gradient_estimator))
+                                Em1_GT_gradient_n.append(np.average(GT_based_estimator))
                             # if (c == 0) and (agent in participants):
                             #     returns = [sum([rew*(self.discount**k) for k, rew in enumerate(path['rewards'])]) for path in paths]
                             #     average_returns = np.mean(returns)
@@ -161,6 +198,6 @@ class Server(BatchPolopt, Serializable):
                     agent.transmit_to_agent(delta_server, theta_server)
                     agent.GT_update()
 
-                self.log_diagnostics(self.current_itr, paths_n, gradient_n)
+                self.log_diagnostics(self.current_itr, delta_server, Em1_paths_n, Em1_gradient_n, Em1_GT_gradient_n, zero_paths_n, zero_gradient_n, zero_GT_gradient_n)
 
         self.shutdown_worker()
