@@ -29,10 +29,8 @@ def run_task(v):
     print("_________________________________")
 
     env = normalize(CartpoleEnv())
-
-    policy = GaussianMLPPolicy(
-        env_spec=env.spec
-    )
+    policy = GaussianMLPPolicy(env.spec, hidden_sizes=(8,),learn_std=False)
+    snap_policy = GaussianMLPPolicy(env.spec, hidden_sizes=(8,),learn_std=False)
 
     baseline = LinearFeatureBaseline(env_spec=env.spec)
 
@@ -42,14 +40,14 @@ def run_task(v):
         average_period=average_period,
         env=env,
         policy=policy,
+        snap_policy=snap_policy,
         baseline=baseline,
         learning_rate=1e-3,
-        difference_params=True,
-        quantize=True,
+        quantize=False,
         quantization_tuning=quantization_tuning,
         batch_size=400,
         max_path_length=100,
-        n_itr=100,
+        n_itr=400,
         discount=discount,
         step_size=0.0001,
     )
@@ -59,8 +57,8 @@ def run_task(v):
 quantization_tunings = [20]
 discounts = [0.99]
 participation_rates = [1]
-agents_numbers = [5]
-average_periods = [1]
+agents_numbers = [1]
+average_periods = [50]
 
 for quantization_tuning in quantization_tunings:
     for discount in discounts:
