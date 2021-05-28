@@ -47,7 +47,7 @@ def run_task(v):
         quantization_tuning=quantization_tuning,
         batch_size=400,
         max_path_length=100,
-        n_itr=400,
+        n_itr=10000, # number of explored trajectories
         discount=discount,
         step_size=0.0001,
     )

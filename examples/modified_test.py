@@ -91,10 +91,10 @@ perc_est = 0.6
 #tot trajectories
 s_tot = 10000
 
-partition = 3
+# partition = 3
 
 
-porz = np.int(perc_est*N)
+# porz = np.int(perc_est*N)
 
 observations_var = env.observation_space.new_tensor_variable(
 	'observations',
@@ -131,8 +131,8 @@ eval_grad4 = TT.vector('eval_grad4',dtype=grad[3].dtype)
 surr_on1 = TT.sum(- dist.log_likelihood_sym_1traj_GPOMDP(actions_var,dist_info_vars)*d_rewards_var*importance_weights_var)
 surr_on2 = TT.sum(snap_dist.log_likelihood_sym_1traj_GPOMDP(actions_var,snap_dist_info_vars)*d_rewards_var)
 grad_SVRG =[sum(x) for x in zip([eval_grad1, eval_grad2, eval_grad3, eval_grad4], theano.grad(surr_on1,params),theano.grad(surr_on2,snap_params))]
-grad_SVRG_4v = [sum(x) for x in zip(theano.grad(surr_on1,params),theano.grad(surr_on2,snap_params))]
-grad_var = theano.grad(surr_on1,params)
+# grad_SVRG_4v = [sum(x) for x in zip(theano.grad(surr_on1,params),theano.grad(surr_on2,snap_params))]
+# grad_var = theano.grad(surr_on1,params)
 
 f_train = theano.function(
 	inputs = [observations_var, actions_var, d_rewards_var],
@@ -159,45 +159,46 @@ f_train_SVRG = theano.function(
 
 
 
-f_train_SVRG_4v = theano.function(
-	inputs=[observations_var, actions_var, d_rewards_var,importance_weights_var],
-	outputs=grad_SVRG_4v,
-)
+# f_train_SVRG_4v = theano.function(
+# 	inputs=[observations_var, actions_var, d_rewards_var,importance_weights_var],
+# 	outputs=grad_SVRG_4v,
+# )
 
 
 
-var_SVRG = theano.function(
-	inputs=[observations_var, actions_var, d_rewards_var, importance_weights_var],
-	outputs=grad_var,
-)
+# var_SVRG = theano.function(
+# 	inputs=[observations_var, actions_var, d_rewards_var, importance_weights_var],
+# 	outputs=grad_var,
+# )
 
+n_itr = 400
+average_period = 50
 
+# variance_svrg_data={}
+# variance_sgd_data={}
+# importance_weights_data={}
+# rewards_snapshot_data={}
+# rewards_subiter_data={}
+# n_sub_iter_data={}
 
-variance_svrg_data={}
-variance_sgd_data={}
-importance_weights_data={}
-rewards_snapshot_data={}
-rewards_subiter_data={}
-n_sub_iter_data={}
-
-for k in range(10):
-	if (load_policy):
-		snap_policy.set_param_values(np.loadtxt('policy_novar.txt'), trainable=True)
-		policy.set_param_values(np.loadtxt('policy_novar.txt'), trainable=True)
-	avg_return = list()
-	n_sub_iter=[]
-	rewards_sub_iter=[]
-	rewards_snapshot=[]
-	importance_weights=[]
-	variance_svrg = []
-	variance_sgd = []
+for k in range(1):
+	# if (load_policy):
+	# 	snap_policy.set_param_values(np.loadtxt('policy_novar.txt'), trainable=True)
+	# 	policy.set_param_values(np.loadtxt('policy_novar.txt'), trainable=True)
+	# avg_return = list()
+	# n_sub_iter=[]
+	# rewards_sub_iter=[]
+	# rewards_snapshot=[]
+	# importance_weights=[]
+	# variance_svrg = []
+	# variance_sgd = []
 
 	#np.savetxt("policy_novar.txt",snap_policy.get_param_values(trainable=True))
-	j=0
-	while j<s_tot-N:
+	# j=0
+	for r in range(n_itr//average_period):
 		paths = parallel_sampler.sample_paths_on_trajectories(snap_policy.get_param_values(),N,T,show_bar=False)
 		#baseline.fit(paths)
-		j+=N
+		# j+=N
 		observations = [p["observations"] for p in paths]
 		actions = [p["actions"] for p in paths]
 		d_rewards = [p["rewards"] for p in paths]
@@ -218,40 +219,42 @@ for k in range(10):
 			s_g = [sum(x) for x in zip(s_g,i_g)]
 		s_g = [x/len(paths) for x in s_g]
 		
-		b=compute_snap_batch(observations[0:porz],actions[0:porz],d_rewards[0:porz],porz,partition)
+		# b=compute_snap_batch(observations[0:porz],actions[0:porz],d_rewards[0:porz],porz,partition)
 		f_update(s_g[0],s_g[1],s_g[2],s_g[3])
-		rewards_snapshot.append(np.array([sum(p["rewards"]) for p in paths])) 
-		avg_return.append(np.mean([sum(p["rewards"]) for p in paths]))
+		# rewards_snapshot.append(np.array([sum(p["rewards"]) for p in paths])) 
+		# avg_return.append(np.mean([sum(p["rewards"]) for p in paths]))
 
-		var_sgd = np.cov(np.matrix(b),rowvar=False)
-		var_batch = (var_sgd)*(porz/partition)/M
+		# var_sgd = np.cov(np.matrix(b),rowvar=False)
+		# var_batch = (var_sgd)*(porz/partition)/M
+		j = r+1
+		print(str(j-1)+' Average Return:', np.mean([sum(p["rewards"]) for p in paths]))
+
 		
-		print(str(j-1)+' Average Return to compute Agent Gradient:', avg_return[-1])
 
-		
-
-		back_up_policy.set_param_values(policy.get_param_values(trainable=True), trainable=True) 
+		# back_up_policy.set_param_values(policy.get_param_values(trainable=True), trainable=True) 
 		n_sub = 0
-		while j<s_tot-M:
-			iw_var = f_importance_weights(observations[0],actions[0])
-			s_g_is = var_SVRG(observations[0], actions[0], d_rewards[0],iw_var)
-			s_g_fv_is = [unpack(s_g_is)]
-			for ob,ac,rw in zip(observations[1:],actions[1:],d_rewards[1:]):
-				iw_var = f_importance_weights(ob, ac)
-				s_g_is = var_SVRG(ob, ac, rw,iw_var)
-				s_g_fv_is.append(unpack(s_g_is))
-			var_svrg = (estimate_variance(observations[porz:],actions[porz:],d_rewards[porz:],b,N-porz,porz,partition,M,N))
-			var_dif = var_svrg-(np.diag(var_batch).sum())
-			#eigval = np.real(np.linalg.eig(var_dif)[0])
-			if (var_dif>0 or np.mean(iw_var)<0.6):
-				print("1") # TODO : add the variance calculation in the algo 
-				policy.set_param_values(back_up_policy.get_param_values(trainable=True), trainable=True)
-				break
-			variance_svrg.append(var_svrg)
-			variance_sgd.append((np.diag(var_batch).sum()))
+		for c in range(average_period):
+			# iw_var = f_importance_weights(observations[0],actions[0])
+			# s_g_is = var_SVRG(observations[0], actions[0], d_rewards[0],iw_var)
+			# s_g_fv_is = [unpack(s_g_is)]
+			# for ob,ac,rw in zip(observations[1:],actions[1:],d_rewards[1:]):
+			# 	iw_var = f_importance_weights(ob, ac)
+			# 	s_g_is = var_SVRG(ob, ac, rw,iw_var)
+			# 	s_g_fv_is.append(unpack(s_g_is))
+			# var_svrg = (estimate_variance(observations[porz:],actions[porz:],d_rewards[porz:],b,N-porz,porz,partition,M,N))
+			# var_dif = var_svrg-(np.diag(var_batch).sum())
+			# #eigval = np.real(np.linalg.eig(var_dif)[0])
+			# print(var_dif)
+			# print(np.mean(iw_var))
+			# if (var_dif>0 or np.mean(iw_var)<0.6):
+			# 	print("1") # TODO : add the variance calculation in the algo 
+			# 	policy.set_param_values(back_up_policy.get_param_values(trainable=True), trainable=True)
+			# 	break
+			# variance_svrg.append(var_svrg)
+			# variance_sgd.append((np.diag(var_batch).sum()))
 
 			#print(np.sum(eigval))
-			j += M
+			# j += M
 			n_sub+=1
 			sub_paths = parallel_sampler.sample_paths_on_trajectories(snap_policy.get_param_values(),M,T,show_bar=False)
 			#baseline.fit(paths)
@@ -268,13 +271,13 @@ for k in range(10):
 				temp.append(np.array(z))
 			sub_d_rewards = temp
 			iw = f_importance_weights(sub_observations[0],sub_actions[0])
-			importance_weights.append(np.mean(iw))
-			back_up_policy.set_param_values(policy.get_param_values(trainable=True), trainable=True) 
+			# importance_weights.append(np.mean(iw))
+			# back_up_policy.set_param_values(policy.get_param_values(trainable=True), trainable=True) 
 			
 			g = f_train_SVRG(sub_observations[0],sub_actions[0],sub_d_rewards[0],s_g[0],s_g[1],s_g[2],s_g[3],iw)
 			for ob,ac,rw in zip(sub_observations[1:],sub_actions[1:],sub_d_rewards[1:]):
 				iw = f_importance_weights(ob,ac)
-				importance_weights.append(np.mean(iw))
+				# importance_weights.append(np.mean(iw))
 				g = [sum(x) for x in zip(g,f_train_SVRG(ob,ac,rw,s_g[0],s_g[1],s_g[2],s_g[3],iw))]
 			g = [x/len(sub_paths) for x in g]
 			f_update(g[0],g[1],g[2],g[3])
@@ -282,33 +285,33 @@ for k in range(10):
 			p=snap_policy.get_param_values(trainable=True)
 			s_p = parallel_sampler.sample_paths_on_trajectories(policy.get_param_values(),10,T,show_bar=False)
 			snap_policy.set_param_values(p,trainable=True)
-			rewards_sub_iter.append(np.array([sum(p["rewards"]) for p in s_p]))
-			avg_return.append(np.mean([sum(p["rewards"]) for p in s_p]))
-			print(str(j)+' Average Return Agent solo:', avg_return[-1])
-		n_sub_iter.append(n_sub)
+		# 	rewards_sub_iter.append(np.array([sum(p["rewards"]) for p in s_p]))
+		# 	avg_return.append(np.mean([sum(p["rewards"]) for p in s_p]))
+		# 	#print(str(j)+' Average Return:', avg_return[j])
+		# n_sub_iter.append(n_sub)
 		snap_policy.set_param_values(policy.get_param_values(trainable=True), trainable=True)    
 		
 	
-	rewards_subiter_data["rewardsSubIter"+str(k)]=rewards_sub_iter
-	rewards_snapshot_data["rewardsSnapshot"+str(k)]= rewards_snapshot
-	n_sub_iter_data["nSubIter"+str(k)]= n_sub_iter
-	variance_sgd_data["variancceSgd"+str(k)] = variance_sgd
-	variance_svrg_data["varianceSvrg"+str(k)]=variance_svrg
-	importance_weights_data["importanceWeights"+str(k)] = importance_weights
+# 	rewards_subiter_data["rewardsSubIter"+str(k)]=rewards_sub_iter
+# 	rewards_snapshot_data["rewardsSnapshot"+str(k)]= rewards_snapshot
+# 	n_sub_iter_data["nSubIter"+str(k)]= n_sub_iter
+# 	variance_sgd_data["variancceSgd"+str(k)] = variance_sgd
+# 	variance_svrg_data["varianceSvrg"+str(k)]=variance_svrg
+# 	importance_weights_data["importanceWeights"+str(k)] = importance_weights
 
-	avg_return=np.array(avg_return)
-	#plt.plot(avg_return)
-	#plt.show()
-rewards_subiter_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in rewards_subiter_data.items() ]))
-rewards_snapshot_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in rewards_snapshot_data.items() ]))
-n_sub_iter_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in n_sub_iter_data.items() ]))
-variance_sgd_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in variance_sgd_data.items() ]))
-variance_svrg_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in variance_svrg_data.items() ]))
-importance_weights_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in importance_weights_data.items() ]))
+# 	avg_return=np.array(avg_return)
+# 	#plt.plot(avg_return)
+# 	#plt.show()
+# rewards_subiter_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in rewards_subiter_data.items() ]))
+# rewards_snapshot_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in rewards_snapshot_data.items() ]))
+# n_sub_iter_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in n_sub_iter_data.items() ]))
+# variance_sgd_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in variance_sgd_data.items() ]))
+# variance_svrg_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in variance_svrg_data.items() ]))
+# importance_weights_data = pd.DataFrame(dict([ (k,pd.Series(v)) for k,v in importance_weights_data.items() ]))
 
-rewards_subiter_data.to_csv("rewards_subiter.csv",index=False)
-rewards_snapshot_data.to_csv("rewards_snapshot.csv",index=False)
-n_sub_iter_data.to_csv("n_sub_iter.csv",index=False)
-variance_sgd_data.to_csv("variance_sgd.csv",index=False)
-variance_svrg_data.to_csv("variance_svrg.csv",index=False)
-importance_weights_data.to_csv("importance_weights.csv",index=False)
+# rewards_subiter_data.to_csv("rewards_subiter.csv",index=False)
+# rewards_snapshot_data.to_csv("rewards_snapshot.csv",index=False)
+# n_sub_iter_data.to_csv("n_sub_iter.csv",index=False)
+# variance_sgd_data.to_csv("variance_sgd.csv",index=False)
+# variance_svrg_data.to_csv("variance_svrg.csv",index=False)
+# importance_weights_data.to_csv("importance_weights.csv",index=False)

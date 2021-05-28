@@ -58,6 +58,7 @@ class Server(BatchPolopt, Serializable):
                         for optimizer in optimizer]
         self.baseline = baseline
 
+        self.nb_trajectories = n_itr
         self.learning_rate = learning_rate
         self.average_period = average_period
 
@@ -128,6 +129,14 @@ class Server(BatchPolopt, Serializable):
     def train(self):
         self.start_worker()
         self.init_opt()
+        j=0
+        while j<s_tot-N:
+            j+=N
+            avg_return = self.server_estimate_gradient()
+            self.log_diagnostics(self.current_itr, avg_return)
+
+
+            
 
         for r in range(self.n_itr//self.average_period):
             avg_return = self.server_estimate_gradient()
