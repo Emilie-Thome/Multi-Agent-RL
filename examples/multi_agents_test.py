@@ -223,7 +223,7 @@ for k in range(1):
 				var_dif = var_svrg-(np.diag(var_batch).sum())
 				#eigval = np.real(np.linalg.eig(var_dif)[0])
 				if (var_dif>0 or np.mean(iw_var)<0.6):
-					print("1") # TODO : add the variance calculation in the algo 
+					print("1") 
 					agent.policy.set_param_values(agent.back_up_policy.get_param_values(trainable=True), trainable=True)
 					break
 				variance_svrg.append(var_svrg)
