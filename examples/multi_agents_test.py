@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 from rllab.envs.gym_env import GymEnv
 import pandas as pd
 
+# TODO: instead of the gradient, the agents normalize the gradient and use the normalize gradient to update.
+
 def unpack(i_g):
 	i_g_arr = [np.array(x) for x in i_g]
 	res = i_g_arr[0].reshape(i_g_arr[0].shape[0]*i_g_arr[0].shape[1])
@@ -19,36 +21,24 @@ def unpack(i_g):
 	res = np.concatenate((res,i_g_arr[3]))
 	return res
 
-# We will collect N trajectories per iteration
-N = 100
-# Each trajectory will have at most 100 time steps
-T = 100
-#We will collect M secondary trajectories
-M = 10
-#Number of sub-iterations
-#m_itr = 100
-# Number of iterations
-#n_itr = np.int(10000/(m_itr*M+N))
-# Set the discount factor for the problem
-discount = 0.99
-# Learning rate for the gradient update
-learning_rate = 0.0001
-#perc estimate
-perc_est = 0.6
-
-partition = 3
-
-nb_agents = 10
-#tot trajectories
-s_tot = nb_agents*10000
-participation_rate = 1
-
+nb_agents = 3 				# Number of agents
+participation_rate = 1 		# Participation rate among agents to communicate with the server
+s_tot = nb_agents*100000	# Total number of trajectories
+N = 10000 					# N trajectories collected per iteration
+M = 10 						# M secondary trajectories collected
+T = 100 					# Trajectories will have at most 100 time steps
+discount = 0.99 			# Discount factor for the objective
+learning_rate = 0.0001 		# Learning rate for the gradient update
+perc_est = 0.9 				# Perc estimate
+partition = 3 # 3
 porz = np.int(perc_est*N)
+
+env = normalize(CartpoleEnv())
 
 class Agent(object):
 
     def __init__(self):
-    	self.env = normalize(CartpoleEnv())
+    	self.env = env # same environment for every agent
     	self.policy = GaussianMLPPolicy(self.env.spec, hidden_sizes=(8,),learn_std=False)
     	self.snap_policy = GaussianMLPPolicy(self.env.spec, hidden_sizes=(8,),learn_std=False)
     	self.back_up_policy = GaussianMLPPolicy(self.env.spec, hidden_sizes=(8,),learn_std=False)
@@ -267,72 +257,8 @@ for k in range(1):
 				print(str(j)+' Average Return Agent solo:', avg_return[-1])
 			print("2")
 			n_sub_iter.append(n_sub)
-			agent.snap_policy.set_param_values(agent.policy.get_param_values(trainable=True), trainable=True)    
-		
-	
-		# n_sub = 0
-		# while j<s_tot-M:
-		# 	j += M
-		# 	n_sub+=1
-		# 	for agent in agents:
-		# 		iw_var = agent.f_importance_weights(observations[agent][0],actions[agent][0])
-		# 		s_g_is = agent.var_SVRG(observations[agent][0], actions[agent][0], d_rewards[agent][0],iw_var)
-		# 		s_g_fv_is = [unpack(s_g_is)]
-		# 		for ob,ac,rw in zip(observations[agent][1:],actions[agent][1:],d_rewards[agent][1:]):
-		# 			iw_var = agent.f_importance_weights(ob, ac)
-		# 			s_g_is = agent.var_SVRG(ob, ac, rw,iw_var)
-		# 			s_g_fv_is.append(unpack(s_g_is))
-		# 		var_svrg = (agent.estimate_variance(observations[agent][porz:],actions[agent][porz:],d_rewards[agent][porz:],b,N-porz,porz,partition,M,N))
-		# 		var_dif = var_svrg-(np.diag(var_batch).sum())
-		# 		#eigval = np.real(np.linalg.eig(var_dif)[0])
-		# 		if (var_dif>0 or np.mean(iw_var)<0.6):
-		# 			print("1") # TODO : add the variance calculation in the algo 
-		# 			agent.policy.set_param_values(agent.back_up_policy.get_param_values(trainable=True), trainable=True)
-		# 			break
-		# 		variance_svrg.append(var_svrg)
-		# 		variance_sgd.append((np.diag(var_batch).sum()))
+			agent.snap_policy.set_param_values(agent.policy.get_param_values(trainable=True), trainable=True)
 
-		# 		#print(np.sum(eigval))
-				
-				
-		# 		sub_paths = parallel_sampler.sample_paths_on_trajectories(agent.snap_policy.get_param_values(),M,T,show_bar=False)
-		# 		#baseline.fit(paths)
-		# 		sub_observations=[p["observations"] for p in sub_paths]
-		# 		sub_actions = [p["actions"] for p in sub_paths]
-		# 		sub_d_rewards = [p["rewards"] for p in sub_paths]
-		# 		temp = list()
-		# 		for x in sub_d_rewards:
-		# 			z=list()
-		# 			t=1
-		# 			for y in x:
-		# 				z.append(y*t)
-		# 				t*=discount
-		# 			temp.append(np.array(z))
-		# 		sub_d_rewards = temp
-		# 		iw = agent.f_importance_weights(sub_observations[0],sub_actions[0])
-		# 		importance_weights.append(np.mean(iw))
-		# 		agent.back_up_policy.set_param_values(agent.policy.get_param_values(trainable=True), trainable=True) 
-				
-		# 		g = agent.f_train_SVRG(sub_observations[0],sub_actions[0],sub_d_rewards[0],s_g[0],s_g[1],s_g[2],s_g[3],iw)
-		# 		for ob,ac,rw in zip(sub_observations[1:],sub_actions[1:],sub_d_rewards[1:]):
-		# 			iw = agent.f_importance_weights(ob,ac)
-		# 			importance_weights.append(np.mean(iw))
-		# 			g = [sum(x) for x in zip(g,agent.f_train_SVRG(ob,ac,rw,s_g[0],s_g[1],s_g[2],s_g[3],iw))]
-		# 		g = [x/len(sub_paths) for x in g]
-		# 		agent.f_update(g[0],g[1],g[2],g[3])
-
-		# 		p = agent.snap_policy.get_param_values(trainable=True)
-		# 		s_p = parallel_sampler.sample_paths_on_trajectories(agent.policy.get_param_values(),10,T,show_bar=False)
-		# 		agent.snap_policy.set_param_values(p,trainable=True)
-		# 		rewards_sub_iter.append(np.array([sum(p["rewards"]) for p in s_p]))
-		# 		avg_return.append(np.mean([sum(p["rewards"]) for p in s_p]))
-				
-		# 		print(str(j)+' Average Return:', avg_return[-1])
-		# n_sub_iter.append(n_sub)
-		# for agent in agents:
-		# 	agent.snap_policy.set_param_values(agent.policy.get_param_values(trainable=True), trainable=True)    
-		
-	
 	rewards_subiter_data["rewardsSubIter"+str(k)]=rewards_sub_iter
 	rewards_snapshot_data["rewardsSnapshot"+str(k)]= rewards_snapshot
 	n_sub_iter_data["nSubIter"+str(k)]= n_sub_iter
